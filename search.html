@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Healthcare - Ayur</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                AYUR<span>.BD</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="search.html" class="active">Find Healthcare</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html" class="btn btn-primary">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Search Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find Healthcare Services</h1>
+            <p>Search for verified doctors, hospitals, clinics, and pharmacies</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="section">
+        <div class="container">
+            <div class="card">
+                <h3 class="mb-3">Search Healthcare Providers</h3>
+                <form id="searchForm">
+                    <div class="grid grid-2">
+                        <div class="form-group">
+                            <label for="provider_type" class="form-label">Provider Type</label>
+                            <select id="provider_type" name="provider_type" class="form-control">
+                                <option value="">All Types</option>
+                                <option value="doctor">Doctors</option>
+                                <option value="hospital">Hospitals</option>
+                                <option value="clinic">Clinics</option>
+                                <option value="pharmacy">Pharmacies</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialization" class="form-label">Specialization (for Doctors)</label>
+                            <select id="specialization" name="specialization" class="form-control">
+                                <option value="">All Specializations</option>
+                                <option value="General Physician">General Physician</option>
+                                <option value="Cardiologist">Cardiologist</option>
+                                <option value="Dermatologist">Dermatologist</option>
+                                <option value="Pediatrician">Pediatrician</option>
+                                <option value="Neurologist">Neurologist</option>
+                                <option value="Orthopedic">Orthopedic</option>
+                                <option value="Gynecologist">Gynecologist</option>
+                                <option value="Psychiatrist">Psychiatrist</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="search_keyword" class="form-label">Search by Name or Location</label>
+                        <input type="text" id="search_keyword" name="search_keyword" class="form-control" placeholder="Enter name, area, or city">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">🔍 Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="mb-4">Search Results</h2>
+            <div id="search-results">
+                <div class="alert alert-info">
+                    <p>Use the search form above to find healthcare providers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Providers -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-4">Popular Healthcare Providers</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <h4>👨‍⚕️ Dr. Sample Doctor</h4>
+                    <p><strong>Specialization:</strong> Cardiologist</p>
+                    <p><strong>Experience:</strong> 15 years</p>
+                    <p><strong>Fee:</strong> BDT 1000</p>
+                    <p>⭐⭐⭐⭐⭐ (4.8/5)</p>
+                    <button class="btn btn-primary btn-sm">Book Appointment</button>
+                </div>
+                
+                <div class="card">
+                    <h4>🏥 Sample Hospital</h4>
+                    <p><strong>Type:</strong> Private</p>
+                    <p><strong>Services:</strong> Multi-specialty</p>
+                    <p><strong>Location:</strong> Dhaka</p>
+                    <p>⭐⭐⭐⭐ (4.5/5)</p>
+                    <button class="btn btn-primary btn-sm">View Details</button>
+                </div>
+                
+                <div class="card">
+                    <h4>💊 Sample Pharmacy</h4>
+                    <p><strong>Services:</strong> 24/7 Available</p>
+                    <p><strong>Location:</strong> Dhaka</p>
+                    <p><strong>Delivery:</strong> Available</p>
+                    <p>⭐⭐⭐⭐⭐ (4.9/5)</p>
+                    <button class="btn btn-primary btn-sm">Contact</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h4>About Ayur</h4>
+                <p>Ayur is a unified healthcare service platform connecting patients with verified healthcare providers across Bangladesh.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul style="list-style: none;">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact Us</h4>
+                <p>Email: info@ayurbd.me</p>
+                <p>Phone: +880 1XXX-XXXXXX</p>
+                <p>Address: Dhaka, Bangladesh</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Ayur Healthcare Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/search.js"></script>
+</body>
+</html>
