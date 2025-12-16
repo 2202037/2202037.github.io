@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard - Ayur</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard">
+    <header class="dashboard-header">
+        <nav class="dashboard-nav">
+            <div class="logo">
+                AYUR<span>.BD</span> <small style="color: var(--text-light); font-size: 0.9rem;">Hospital Portal</small>
+            </div>
+            <div class="dashboard-user">
+                <span>Welcome, <strong>Hospital Name</strong></span>
+                <div class="user-avatar">H</div>
+                <a href="backend/auth/logout.php" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#dashboard" class="active">📊 Dashboard</a></li>
+            <li><a href="#departments">🏥 Departments</a></li>
+            <li><a href="#appointments">📅 Appointments</a></li>
+            <li><a href="#profile">🏨 Profile</a></li>
+            <li><a href="#reviews">⭐ Reviews</a></li>
+        </ul>
+    </aside>
+
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <h1>Hospital Dashboard</h1>
+            
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="icon">📅</div>
+                    <h3>0</h3>
+                    <p>Today's Appointments</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">🏥</div>
+                    <h3>0</h3>
+                    <p>Active Departments</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">⭐</div>
+                    <h3>0.0</h3>
+                    <p>Average Rating</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">👥</div>
+                    <h3>0</h3>
+                    <p>Total Patients</p>
+                </div>
+            </div>
+
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Hospital Information</h2>
+                    <button class="btn btn-primary btn-sm">Update Information</button>
+                </div>
+                <p class="text-center text-muted">Configure your hospital information and services</p>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

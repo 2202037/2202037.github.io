@@ -221,11 +221,10 @@ function registerDoctor($pdo) {
  * Register a hospital (requires admin verification)
  */
 function registerHospital($pdo) {
-    // Similar implementation for hospital
-    // For brevity, showing key structure
     $name = trim($_POST['name']);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
     $type = $_POST['type'];
     $license_number = trim($_POST['license_number']);
     $address = trim($_POST['address']);
@@ -233,7 +232,45 @@ function registerHospital($pdo) {
     $departments = trim($_POST['departments'] ?? '');
     $operating_hours = trim($_POST['operating_hours'] ?? '');
     
-    // Validation similar to doctor
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($password) || empty($type) || 
+        empty($license_number) || empty($address) || empty($phone)) {
+        $_SESSION['error'] = 'All required fields must be filled';
+        header('Location: ../../register_hospital.html');
+        exit();
+    }
+    
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = 'Invalid email format';
+        header('Location: ../../register_hospital.html');
+        exit();
+    }
+    
+    // Validate password match
+    if ($password !== $confirm_password) {
+        $_SESSION['error'] = 'Passwords do not match';
+        header('Location: ../../register_hospital.html');
+        exit();
+    }
+    
+    // Check if email already exists
+    $stmt = $pdo->prepare("SELECT id FROM temp_hospitals WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $_SESSION['error'] = 'Email already registered. Your application is pending approval.';
+        header('Location: ../../register_hospital.html');
+        exit();
+    }
+    
+    $stmt = $pdo->prepare("SELECT id FROM hospitals WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $_SESSION['error'] = 'Email already registered';
+        header('Location: ../../register_hospital.html');
+        exit();
+    }
+    
     // Hash password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
@@ -261,7 +298,73 @@ function registerHospital($pdo) {
  * Register a clinic (requires admin verification)
  */
 function registerClinic($pdo) {
-    // Implementation similar to hospital
+    $name = trim($_POST['name']);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $license_number = trim($_POST['license_number']);
+    $address = trim($_POST['address']);
+    $phone = trim($_POST['phone']);
+    $departments = trim($_POST['departments'] ?? '');
+    $operating_hours = trim($_POST['operating_hours'] ?? '');
+    
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($password) || 
+        empty($license_number) || empty($address) || empty($phone)) {
+        $_SESSION['error'] = 'All required fields must be filled';
+        header('Location: ../../register_clinic.html');
+        exit();
+    }
+    
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = 'Invalid email format';
+        header('Location: ../../register_clinic.html');
+        exit();
+    }
+    
+    // Validate password match
+    if ($password !== $confirm_password) {
+        $_SESSION['error'] = 'Passwords do not match';
+        header('Location: ../../register_clinic.html');
+        exit();
+    }
+    
+    // Check if email already exists
+    $stmt = $pdo->prepare("SELECT id FROM temp_clinics WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $_SESSION['error'] = 'Email already registered. Your application is pending approval.';
+        header('Location: ../../register_clinic.html');
+        exit();
+    }
+    
+    $stmt = $pdo->prepare("SELECT id FROM clinics WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $_SESSION['error'] = 'Email already registered';
+        header('Location: ../../register_clinic.html');
+        exit();
+    }
+    
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
+    // Handle license document
+    $license_document = handleDocumentUpload($_FILES['license_document'], 'clinic_license', true);
+    
+    // Insert into temp_clinics
+    $stmt = $pdo->prepare("
+        INSERT INTO temp_clinics (email, password, name, license_number, address, phone, 
+                                  departments, operating_hours, license_document)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ");
+    
+    $stmt->execute([
+        $email, $hashed_password, $name, $license_number, $address,
+        $phone, $departments, $operating_hours, $license_document
+    ]);
+    
     $_SESSION['success'] = 'Registration submitted for verification!';
     header('Location: ../../login.html');
     exit();
@@ -271,7 +374,73 @@ function registerClinic($pdo) {
  * Register a pharmacy (requires admin verification)
  */
 function registerPharmacy($pdo) {
-    // Implementation similar to hospital
+    $name = trim($_POST['name']);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $drug_license_number = trim($_POST['drug_license_number']);
+    $owner_name = trim($_POST['owner_name']);
+    $address = trim($_POST['address']);
+    $phone = trim($_POST['phone']);
+    $operating_hours = trim($_POST['operating_hours'] ?? '');
+    
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($password) || 
+        empty($drug_license_number) || empty($owner_name) || empty($address) || empty($phone)) {
+        $_SESSION['error'] = 'All required fields must be filled';
+        header('Location: ../../register_pharmacy.html');
+        exit();
+    }
+    
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error'] = 'Invalid email format';
+        header('Location: ../../register_pharmacy.html');
+        exit();
+    }
+    
+    // Validate password match
+    if ($password !== $confirm_password) {
+        $_SESSION['error'] = 'Passwords do not match';
+        header('Location: ../../register_pharmacy.html');
+        exit();
+    }
+    
+    // Check if email already exists
+    $stmt = $pdo->prepare("SELECT id FROM temp_pharmacies WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $_SESSION['error'] = 'Email already registered. Your application is pending approval.';
+        header('Location: ../../register_pharmacy.html');
+        exit();
+    }
+    
+    $stmt = $pdo->prepare("SELECT id FROM pharmacies WHERE email = ?");
+    $stmt->execute([$email]);
+    if ($stmt->fetch()) {
+        $_SESSION['error'] = 'Email already registered';
+        header('Location: ../../register_pharmacy.html');
+        exit();
+    }
+    
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
+    // Handle license document
+    $license_document = handleDocumentUpload($_FILES['license_document'], 'pharmacy_license', true);
+    
+    // Insert into temp_pharmacies
+    $stmt = $pdo->prepare("
+        INSERT INTO temp_pharmacies (email, password, name, drug_license_number, address, phone, 
+                                     operating_hours, owner_name, license_document)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ");
+    
+    $stmt->execute([
+        $email, $hashed_password, $name, $drug_license_number, $address,
+        $phone, $operating_hours, $owner_name, $license_document
+    ]);
+    
     $_SESSION['success'] = 'Registration submitted for verification!';
     header('Location: ../../login.html');
     exit();
