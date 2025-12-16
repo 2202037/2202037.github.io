@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Ayur</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <nav class="dashboard-nav">
+            <div class="logo">
+                AYUR<span>.BD</span> <small style="color: var(--text-light); font-size: 0.9rem;">Admin Panel</small>
+            </div>
+            <div class="dashboard-user">
+                <span>Welcome, <strong>Administrator</strong></span>
+                <div class="user-avatar">A</div>
+                <a href="backend/auth/logout.php" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#dashboard" class="active">📊 Dashboard</a></li>
+            <li><a href="#pending-doctors">👨‍⚕️ Pending Doctors</a></li>
+            <li><a href="#pending-hospitals">🏥 Pending Hospitals</a></li>
+            <li><a href="#pending-clinics">🏪 Pending Clinics</a></li>
+            <li><a href="#pending-pharmacies">💊 Pending Pharmacies</a></li>
+            <li><a href="#approved-providers">✅ Approved Providers</a></li>
+            <li><a href="#patients">👥 Patients</a></li>
+            <li><a href="#appointments">📅 Appointments</a></li>
+            <li><a href="#reviews">⭐ Reviews</a></li>
+            <li><a href="#blood-banks">🩸 Blood Banks</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <h1>Admin Dashboard</h1>
+            
+            <!-- Statistics -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="icon">👨‍⚕️</div>
+                    <h3 id="total-doctors">0</h3>
+                    <p>Total Doctors</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">🏥</div>
+                    <h3 id="total-hospitals">0</h3>
+                    <p>Total Hospitals/Clinics</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">👥</div>
+                    <h3 id="total-patients">0</h3>
+                    <p>Total Patients</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">⏳</div>
+                    <h3 id="pending-requests">0</h3>
+                    <p>Pending Requests</p>
+                </div>
+            </div>
+
+            <!-- Pending Doctors Section -->
+            <section class="dashboard-section" id="pending-doctors-section">
+                <div class="section-header">
+                    <h2 class="section-title">Pending Doctor Registrations</h2>
+                    <button class="btn btn-primary btn-sm" onclick="loadPendingDoctors()">🔄 Refresh</button>
+                </div>
+                <div id="pending-doctors-content">
+                    <p>Loading...</p>
+                </div>
+            </section>
+
+            <!-- Pending Hospitals Section -->
+            <section class="dashboard-section" id="pending-hospitals-section">
+                <div class="section-header">
+                    <h2 class="section-title">Pending Hospital Registrations</h2>
+                    <button class="btn btn-primary btn-sm" onclick="loadPendingHospitals()">🔄 Refresh</button>
+                </div>
+                <div id="pending-hospitals-content">
+                    <p>Loading...</p>
+                </div>
+            </section>
+
+            <!-- Pending Clinics Section -->
+            <section class="dashboard-section" id="pending-clinics-section">
+                <div class="section-header">
+                    <h2 class="section-title">Pending Clinic Registrations</h2>
+                    <button class="btn btn-primary btn-sm" onclick="loadPendingClinics()">🔄 Refresh</button>
+                </div>
+                <div id="pending-clinics-content">
+                    <p>Loading...</p>
+                </div>
+            </section>
+
+            <!-- Pending Pharmacies Section -->
+            <section class="dashboard-section" id="pending-pharmacies-section">
+                <div class="section-header">
+                    <h2 class="section-title">Pending Pharmacy Registrations</h2>
+                    <button class="btn btn-primary btn-sm" onclick="loadPendingPharmacies()">🔄 Refresh</button>
+                </div>
+                <div id="pending-pharmacies-content">
+                    <p>Loading...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for viewing details -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Provider Details</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div id="modal-body">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/admin-dashboard.js"></script>
+</body>
+</html>
