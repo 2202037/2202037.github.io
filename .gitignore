@@ -1,0 +1,56 @@
+# Environment files (never commit secrets)
+.env
+.env.local
+.env.production
+
+# Flutter build artifacts
+ayur_app/build/
+ayur_app/.dart_tool/
+ayur_app/.flutter-plugins
+ayur_app/.flutter-plugins-dependencies
+ayur_app/.packages
+ayur_app/pubspec.lock
+
+# Android
+ayur_app/android/.gradle/
+ayur_app/android/local.properties
+ayur_app/android/key.properties
+ayur_app/android/app/google-services.json
+
+# iOS
+ayur_app/ios/Pods/
+ayur_app/ios/Flutter/Flutter.framework
+ayur_app/ios/Flutter/Flutter.podspec
+ayur_app/ios/GoogleService-Info.plist
+
+# macOS
+ayur_app/macos/Pods/
+
+# Dart
+ayur_app/**/*.g.dart
+ayur_app/**/*.freezed.dart
+
+# IDE
+.idea/
+.vscode/settings.json
+*.iml
+*.ipr
+*.iws
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Hive local database
+ayur_app/hive/
+
+# Assets (add your own fonts/images locally)
+ayur_app/assets/fonts/
+ayur_app/assets/images/
+ayur_app/assets/animations/
+
+# PHP vendor (if using Composer)
+backend/vendor/
