@@ -124,7 +124,10 @@ class PharmacyNotifier extends StateNotifier<PharmacyState> {
         cartItems.indexWhere((item) => item.product.id == product.id);
 
     if (existingIndex >= 0) {
-      cartItems[existingIndex].quantity++;
+      cartItems[existingIndex] = CartItem(
+        product: cartItems[existingIndex].product,
+        quantity: cartItems[existingIndex].quantity + 1,
+      );
     } else {
       cartItems.add(CartItem(product: product));
     }
@@ -145,7 +148,7 @@ class PharmacyNotifier extends StateNotifier<PharmacyState> {
     }
     final cartItems = state.cartItems.map((item) {
       if (item.product.id == productId) {
-        item.quantity = quantity;
+        return CartItem(product: item.product, quantity: quantity);
       }
       return item;
     }).toList();

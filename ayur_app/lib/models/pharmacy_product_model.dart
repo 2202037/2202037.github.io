@@ -74,9 +74,9 @@ class PharmacyProductModel {
 
 class CartItem {
   final PharmacyProductModel product;
-  int quantity;
+  final int quantity;
 
-  CartItem({required this.product, this.quantity = 1});
+  const CartItem({required this.product, this.quantity = 1});
 
   double get total => product.effectivePrice * quantity;
   String get formattedTotal => '₹${total.toStringAsFixed(0)}';
