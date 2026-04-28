@@ -1,0 +1,3905 @@
+these are the topic for My AI sessional Exam. i don't understand properly, explain me what to do and how to do it?
+
+It completely makes sense that you are feeling a bit confused! The messages in your screenshots jump between the general syllabus and some very specific, strict rules from your teacher regarding the coding part.
+
+Here is a clear, straightforward breakdown of exactly what your AI Sessional Midterm (Mahbub Sir's part) requires and how you should prepare for it.
+
+📋 The Exam Syllabus
+Your exam is scheduled for April 28, 2026, and covers four main topics:
+
+Logic Implementation
+
+First-Order Logic
+
+Predicate Logic
+
+Basic Neural Network with Back Propagation Algorithm
+
+🚨 The Critical Instruction (What the Bengali chats mean)
+The main confusion in your screenshots revolves around Topic 4 (Neural Networks). Your teacher has made a very specific rule about how you must code this:
+
+You cannot just use PyTorch or TensorFlow for the main assignment. While these libraries have built-in functions (like .backward()) that do all the heavy lifting in about 50 lines of code, your teacher wants you to understand the underlying math.
+
+You must submit TWO separate codes for the Neural Network:
+
+Code 1 (Pure Python): A completely "manual" implementation from scratch. You must write out the forward propagation, the loss function, the backpropagation (calculating the gradients manually using math), and the training loop using only standard Python (and likely numpy). This will be longer (around 150-200 lines).
+
+Code 2 (PyTorch): A modern implementation using PyTorch's built-in functions to show how it's done in the industry.
+
+🛠️ How to Prepare and What to Do
+Here is your step-by-step action plan to get ready for this exam:
+
+Step 1: Master the Logic Topics (Topics 1, 2 & 3)
+
+What to do: You need to know how to represent logical statements in code.
+
+How to practice: Write Python scripts that evaluate truth tables, perform basic inference (like Modus Ponens), and represent facts and rules. Be comfortable translating English sentences into logical expressions and writing code that evaluates if those expressions are True or False.
+
+Step 2: Build the Manual Neural Network (Topic 4 - Part A)
+
+What to do: Write a basic Multi-Layer Perceptron (MLP) from scratch without any deep learning libraries.
+
+How to practice: You will need to use the numpy library for matrix math. Practice writing functions for:
+
+Initialization: Setting up random weights and biases.
+
+Forward Pass: Calculating the dot product of inputs and weights, and passing them through an activation function (like Sigmoid or ReLU).
+
+Loss Calculation: Writing a function for Mean Squared Error (MSE).
+
+Backward Pass (The hard part): Manually coding the chain-rule derivatives to find out how much to adjust each weight.
+
+Weight Update: Using standard Gradient Descent to update the weights.
+
+Step 3: Build the PyTorch Neural Network (Topic 4 - Part B)
+
+What to do: Recreate the exact same network from Step 2, but use PyTorch.
+
+How to practice: Learn how to define a model using torch.nn.Module, set up an optimizer (like torch.optim.SGD), and write a standard PyTorch training loop where you simply call loss.backward() and optimizer.step().
+
+Since the manual backpropagation code is usually the most challenging part of this syllabus, would you like me to help you write a basic "Pure Python" template for it so you can see how the math translates into code?
+
+give me proper and full guideline for each step, what to do in that step? how to do it? what do i need to do these? do i need anything to install in my laptop, how to implement, what to learn for that. give all that for each 4 step in full details.
+
+First of all, take a deep breath. Looking at the current date and your syllabus, your exam is tomorrow! Since time is extremely short, we are going to focus purely on the practical, high-yield tasks you need to get this done.
+
+Here is your survival guide.
+
+💻 Global Setup: What you need to install right now
+Before you start coding, you need the right tools on your laptop. You only need to do this once.
+
+Install Python: Download and install Python from python.org (make sure to check "Add Python to PATH" during installation).
+
+Install a Code Editor: Download VS Code (Visual Studio Code). It’s lightweight and industry standard.
+
+Install Required Libraries: Open the terminal (Command Prompt on Windows, or Terminal on Mac) and run this exact command to install the math and AI libraries you need:
+
+Bash
+pip install numpy torch sympy
+📘 Step 1: Logic Implementation
+What to do: You need to write Python code that mimics basic logic gates (AND, OR, NOT, XOR) and evaluates Truth Tables.
+
+What to learn: Basic Boolean logic and Python conditional statements (if, else, and, or, not).
+
+How to implement: Create simple Python functions. For example, an AND logic implementation looks like this:
+
+Python
+def logic_AND(a, b):
+    if a == 1 and b == 1:
+        return 1
+    else:
+        return 0
+You will need to write these for all basic gates and print out the results for inputs (0,0), (0,1), (1,0), and (1,1).
+
+📗 Step 2 & 3: First-Order Logic & Predicate Logic
+(These two are grouped because they are usually coded using similar techniques in introductory AI).
+
+What to do: You need to translate English facts (e.g., "All humans are mortal. Socrates is a human.") into code that the computer can use to infer new truths ("Therefore, Socrates is mortal").
+
+What to learn: You need to understand Predicates (properties like is_human()) and Quantifiers (∀ for "all", ∃ for "exists").
+
+How to implement: The easiest way to do this in standard Python without complex libraries is using Dictionaries and Lists to store facts, and Functions to represent rules (Forward Chaining).
+
+Facts: knowledge_base = {"human": ["Socrates", "Plato"], "god": ["Zeus"]}
+
+Rule: Write a loop that says if x in knowledge_base["human"]: print(f"{x} is mortal")
+
+📕 Step 4: Basic Neural Network (The Big Task)
+This is where your teacher gave strict instructions. You must write two different files for this.
+
+Part A: The Manual Way (Pure Python/Numpy)
+What to do: Build a Neural Network from scratch without Deep Learning libraries.
+
+What to learn: Matrix multiplication, the math behind the Sigmoid activation function σ(x)= 
+1+e 
+−x
+ 
+1
+​
+ , and how to calculate the derivative of your loss function (Calculus chain rule) to update weights.
+
+How to implement: 1.  Create a file named manual_nn.py.
+2.  import numpy as np (Numpy handles the complex matrix math).
+3.  Create a class for your Neural Network.
+4.  Write a forward() function using np.dot() to multiply inputs by weights.
+5.  Write a backward() function. This is the hardest part. You must manually calculate the errors and adjust the weights using the mathematical formula: W 
+new
+​
+ =W 
+old
+​
+ −α× 
+∂W
+∂L
+​
+ .
+
+Part B: The PyTorch Way
+What to do: Do the exact same thing as Part A, but let PyTorch handle the math. This will take about 50 lines of code.
+
+What to learn: The basic PyTorch training loop: Define Model → Calculate Loss → Zero Gradients → Backward Pass → Step Optimizer.
+
+How to implement:
+
+Create a file named pytorch_nn.py.
+
+import torch and import torch.nn as nn.
+
+Define your network using nn.Sequential or by subclassing nn.Module.
+
+Use torch.nn.MSELoss() for your loss function.
+
+The magic happens here: instead of writing the manual math from Part A, you simply call loss.backward() and PyTorch calculates all the derivatives automatically.
+
+Since your exam is tomorrow and the manual backpropagation code (Topic 4, Part A) is mathematically the hardest part to write from scratch, would you like me to write out the full, heavily commented Python code for it right now so you can study and memorize the steps tonight?
+
+Microsoft Windows [Version 10.0.26200.8246]
+
+(c) Microsoft Corporation. All rights reserved.
+
+
+
+C:\Users\User>pip install numpy torch sympy
+
+Requirement already satisfied: numpy in c:\users\user\appdata\local\programs\python\python314\lib\site-packages (2.4.4)
+
+Collecting torch
+
+  Downloading torch-2.11.0-cp314-cp314-win_amd64.whl.metadata (29 kB)
+
+Collecting sympy
+
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+
+Collecting filelock (from torch)
+
+  Downloading filelock-3.29.0-py3-none-any.whl.metadata (2.0 kB)
+
+Requirement already satisfied: typing-extensions>=4.10.0 in c:\users\user\appdata\local\programs\python\python314\lib\site-packages (from torch) (4.15.0)
+
+Collecting setuptools<82 (from torch)
+
+  Downloading setuptools-81.0.0-py3-none-any.whl.metadata (6.6 kB)
+
+Collecting networkx>=2.5.1 (from torch)
+
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+
+Collecting jinja2 (from torch)
+
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+
+Collecting fsspec>=0.8.5 (from torch)
+
+  Downloading fsspec-2026.3.0-py3-none-any.whl.metadata (10 kB)
+
+Collecting mpmath<1.4,>=1.1.0 (from sympy)
+
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+
+  Downloading markupsafe-3.0.3-cp314-cp314-win_amd64.whl.metadata (2.8 kB)
+
+Downloading torch-2.11.0-cp314-cp314-win_amd64.whl (114.6 MB)
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.6/114.6 MB 1.1 MB/s  0:01:34
+
+Downloading setuptools-81.0.0-py3-none-any.whl (1.1 MB)
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 1.4 MB/s  0:00:00
+
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 700.2 kB/s  0:00:08
+
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 1.1 MB/s  0:00:00
+
+Downloading fsspec-2026.3.0-py3-none-any.whl (202 kB)
+
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 830.2 kB/s  0:00:02
+
+Downloading filelock-3.29.0-py3-none-any.whl (39 kB)
+
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+
+Downloading markupsafe-3.0.3-cp314-cp314-win_amd64.whl (15 kB)
+
+Installing collected packages: mpmath, sympy, setuptools, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+
+Successfully installed MarkupSafe-3.0.3 filelock-3.29.0 fsspec-2026.3.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 setuptools-81.0.0 sympy-1.14.0 torch-2.11.0
+
+
+
+[notice] A new release of pip is available: 25.3 -> 26.1
+
+[notice] To update, run: python.exe -m pip install --upgrade pip
+
+
+
+C:\Users\User> python.exe -m pip install --upgrade pip
+
+Requirement already satisfied: pip in c:\users\user\appdata\local\programs\python\python314\lib\site-packages (25.3)
+
+Collecting pip
+
+  Downloading pip-26.1-py3-none-any.whl.metadata (4.6 kB)
+
+Downloading pip-26.1-py3-none-any.whl (1.8 MB)
+
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 7.7 MB/s  0:00:00
+
+Installing collected packages: pip
+
+  Attempting uninstall: pip
+
+    Found existing installation: pip 25.3
+
+    Uninstalling pip-25.3:
+
+      Successfully uninstalled pip-25.3
+
+Successfully installed pip-26.1
+
+
+
+C:\Users\User>
+
+Awesome job getting the environment set up! Your terminal shows that numpy, torch, and sympy are installed perfectly, and your pip is up to date. You are 100% ready to code.
+
+Since your exam is tomorrow, let's get straight to the code. Below are the exact templates you need to practice, memorize, and understand for your Sessional Midterm. Open VS Code, create these Python files, and run them.
+
+📘 Step 1: Logic Implementation
+Create a file named topic1_logic.py. This shows how to implement basic propositional logic using standard Python logic operators.
+
+Python
+# topic1_logic.py
+
+def AND_gate(A, B):
+    return A & B
+
+def OR_gate(A, B):
+    return A | B
+
+def NOT_gate(A):
+    return int(not A)
+
+def XOR_gate(A, B):
+    return A ^ B
+
+print("--- Logic Implementation ---")
+print(f"AND(1, 0) = {AND_gate(1, 0)}")
+print(f"OR(0, 0)  = {OR_gate(0, 0)}")
+print(f"NOT(1)    = {NOT_gate(1)}")
+print(f"XOR(1, 1) = {XOR_gate(1, 1)}")
+📗 Step 2 & 3: First Order Logic & Predicate Logic
+Create a file named topic2_predicate.py. This is a simplified way to represent Knowledge Bases (KB) and inference.
+
+Python
+# topic2_predicate.py
+
+# 1. Knowledge Base (Facts)
+knowledge_base = {
+    "human": ["Socrates", "Aristotle"],
+    "god": ["Zeus", "Apollo"]
+}
+
+# 2. Predicate / Rule (If human -> mortal)
+def is_mortal(entity):
+    if entity in knowledge_base["human"]:
+        return True
+    return False
+
+# 3. Inference Engine
+print("\n--- First Order & Predicate Logic ---")
+test_entities = ["Socrates", "Zeus"]
+
+for entity in test_entities:
+    if is_mortal(entity):
+        print(f"Fact: {entity} is a human. Inference: {entity} is mortal.")
+    else:
+        print(f"Inference: {entity} is NOT proven to be mortal.")
+📕 Step 4 Part A: Basic Neural Network (MANUAL)
+This is the most critical part of your exam. Your teacher wants to see that you understand the math behind Backpropagation. We will use a standard XOR problem. Create a file named manual_nn.py.
+
+Python
+# manual_nn.py
+import numpy as np
+
+# 1. Activation Function (Sigmoid) and its Derivative
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def sigmoid_derivative(x):
+    # Note: x is already passed through sigmoid in our loop
+    return x * (1 - x) 
+
+# 2. Dataset (XOR Problem)
+# Inputs (4 samples, 2 features each)
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+# Expected Outputs (4 samples, 1 output each)
+y = np.array([[0], [1], [1], [0]])
+
+# 3. Initialization
+np.random.seed(42)
+input_neurons = 2
+hidden_neurons = 2
+output_neurons = 1
+
+# Random Weights and Biases
+W_hidden = np.random.uniform(size=(input_neurons, hidden_neurons))
+b_hidden = np.random.uniform(size=(1, hidden_neurons))
+
+W_output = np.random.uniform(size=(hidden_neurons, output_neurons))
+b_output = np.random.uniform(size=(1, output_neurons))
+
+learning_rate = 0.1
+epochs = 10000
+
+print("\n--- Training Manual Neural Network ---")
+# 4. Training Loop
+for epoch in range(epochs):
+    
+    # --- FORWARD PROPAGATION ---
+    # Hidden Layer
+    hidden_layer_input = np.dot(X, W_hidden) + b_hidden
+    hidden_layer_activation = sigmoid(hidden_layer_input)
+    
+    # Output Layer
+    output_layer_input = np.dot(hidden_layer_activation, W_output) + b_output
+    predicted_output = sigmoid(output_layer_input)
+    
+    # --- BACKPROPAGATION ---
+    # Calculate Error
+    error = y - predicted_output
+    
+    # Calculate Gradients for Output Layer
+    d_predicted_output = error * sigmoid_derivative(predicted_output)
+    
+    # Calculate Gradients for Hidden Layer
+    error_hidden_layer = d_predicted_output.dot(W_output.T)
+    d_hidden_layer = error_hidden_layer * sigmoid_derivative(hidden_layer_activation)
+    
+    # --- UPDATING WEIGHTS (Gradient Descent) ---
+    W_output += hidden_layer_activation.T.dot(d_predicted_output) * learning_rate
+    b_output += np.sum(d_predicted_output, axis=0, keepdims=True) * learning_rate
+    
+    W_hidden += X.T.dot(d_hidden_layer) * learning_rate
+    b_hidden += np.sum(d_hidden_layer, axis=0, keepdims=True) * learning_rate
+
+print("Final Predictions after training:")
+print(predicted_output)
+📙 Step 4 Part B: Basic Neural Network (PYTORCH)
+This is exactly what your screenshot mentioned—using a framework reduces a massive block of math into roughly 50 lines. Create a file named pytorch_nn.py.
+
+Python
+# pytorch_nn.py
+import torch
+import torch.nn as nn
+
+# 1. Dataset (XOR Problem)
+X = torch.tensor([[0., 0.], [0., 1.], [1., 0.], [1., 1.]])
+y = torch.tensor([[0.], [1.], [1.], [0.]])
+
+# 2. Define the Model Structure
+model = nn.Sequential(
+    nn.Linear(2, 2),  # 2 inputs to 2 hidden neurons
+    nn.Sigmoid(),     # Activation
+    nn.Linear(2, 1),  # 2 hidden neurons to 1 output
+    nn.Sigmoid()      # Activation
+)
+
+# 3. Loss Function and Optimizer
+loss_fn = nn.MSELoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=0.1)
+
+print("\n--- Training PyTorch Neural Network ---")
+# 4. Training Loop
+epochs = 10000
+for epoch in range(epochs):
+    # Forward Pass
+    y_pred = model(X)
+    
+    # Calculate Loss
+    loss = loss_fn(y_pred, y)
+    
+    # THE MAGIC HAPPENS HERE (Replaces all math from Manual file)
+    optimizer.zero_grad() # Clear old gradients
+    loss.backward()       # Calculate new gradients (Backpropagation)
+    optimizer.step()      # Update weights
+
+print("Final Predictions after training:")
+with torch.no_grad():
+    print(model(X))
+💡 Last Minute Exam Tips:
+Focus on the Math Concept: Sir Mahbub will likely ask why we multiply error * derivative in the manual code. It’s the Chain Rule from calculus. We need to find out how much a small change in weight affects the final loss function:
+
+∂W
+∂L
+​
+ 
+.
+
+Know the PyTorch Magic: Be ready to explain that loss.backward() computes the gradients automatically using Computational Graphs, and optimizer.step() applies the weight update formula.
+
+Get these scripts running, read through the comments to understand the flow, and get a good night's sleep. You've got this!
+
+give all necessay gates implementation 📘 Step 1: Logic Implementation
+
+What to do: You need to write Python code that mimics basic logic gates (AND, OR, NOT, XOR) and evaluates Truth Tables.
+
+What to learn: Basic Boolean logic and Python conditional statements (if, else, and, or, not).
+
+How to implement: Create simple Python functions. For example, an AND logic implementation looks like this:
+
+
+
+Python
+
+
+
+def logic_AND(a, b):
+
+if a == 1 and b == 1:
+
+return 1
+
+else:
+
+return 0
+
+You will need to write these for all basic gates and print out the results for inputs (0,0), (0,1), (1,0), and (1,1).
+
+Here is the complete code for Step 1: Logic Implementation.
+basic logic gates symbols and truth tables, AI generated
+Shutterstock
+Explore
+
+To match the academic style your teacher is looking for, I have written these using pure if/else statements and Python's logical operators (and, or, not). I've also included the code to automatically generate and print the full truth table for every gate.
+
+You can copy and paste this into a file named topic1_logic.py and run it.
+
+Python
+# topic1_logic.py
+
+# ----------------------------------------
+# 1. Logic Gate Functions
+# ----------------------------------------
+
+def logic_AND(a, b):
+    # Returns 1 ONLY if both a and b are 1
+    if a == 1 and b == 1:
+        return 1
+    else:
+        return 0
+
+def logic_OR(a, b):
+    # Returns 1 if AT LEAST ONE of a or b is 1
+    if a == 1 or b == 1:
+        return 1
+    else:
+        return 0
+
+def logic_NOT(a):
+    # Reverses the input (Returns 1 if 0, and 0 if 1)
+    if a == 1:
+        return 0
+    else:
+        return 1
+
+def logic_XOR(a, b):
+    # Exclusive OR: Returns 1 ONLY if inputs are strictly different
+    if a != b:
+        return 1
+    else:
+        return 0
+
+def logic_NAND(a, b):
+    # NOT AND: Returns 0 ONLY if both a and b are 1. Otherwise 1.
+    if a == 1 and b == 1:
+        return 0
+    else:
+        return 1
+
+def logic_NOR(a, b):
+    # NOT OR: Returns 1 ONLY if both a and b are 0. Otherwise 0.
+    if a == 0 and b == 0:
+        return 1
+    else:
+        return 0
+
+
+# ----------------------------------------
+# 2. Evaluating and Printing Truth Tables
+# ----------------------------------------
+
+# The standard inputs for a 2-variable truth table
+inputs_2_vars = [(0, 0), (0, 1), (1, 0), (1, 1)]
+# The standard inputs for a 1-variable truth table (for NOT gate)
+inputs_1_var = [0, 1]
+
+print("=== LOGIC GATES TRUTH TABLES ===\n")
+
+# AND Gate Table
+print("AND Gate:")
+print("A | B | Output")
+print("-" * 14)
+for a, b in inputs_2_vars:
+    print(f"{a} | {b} |   {logic_AND(a, b)}")
+print()
+
+# OR Gate Table
+print("OR Gate:")
+print("A | B | Output")
+print("-" * 14)
+for a, b in inputs_2_vars:
+    print(f"{a} | {b} |   {logic_OR(a, b)}")
+print()
+
+# XOR Gate Table
+print("XOR Gate:")
+print("A | B | Output")
+print("-" * 14)
+for a, b in inputs_2_vars:
+    print(f"{a} | {b} |   {logic_XOR(a, b)}")
+print()
+
+# NAND Gate Table (Bonus - good for extra marks!)
+print("NAND Gate:")
+print("A | B | Output")
+print("-" * 14)
+for a, b in inputs_2_vars:
+    print(f"{a} | {b} |   {logic_NAND(a, b)}")
+print()
+
+# NOR Gate Table (Bonus)
+print("NOR Gate:")
+print("A | B | Output")
+print("-" * 14)
+for a, b in inputs_2_vars:
+    print(f"{a} | {b} |   {logic_NOR(a, b)}")
+print()
+
+# NOT Gate Table
+print("NOT Gate:")
+print("A | Output")
+print("-" * 10)
+for a in inputs_1_var:
+    print(f"{a} |   {logic_NOT(a)}")
+print()
+💡 What this code does:
+Defines the Rules: The functions explicitly tell Python the rules for each gate using basic English logic (if a == 1 and b == 1).
+
+Loops through Inputs: Instead of writing out print(logic_AND(0,0)) manually 20 times, it groups the inputs into a list [(0, 0), (0, 1), (1, 0), (1, 1)] and uses a for loop to pass them into the functions one by one.
+
+Formats the Output: It uses print() statements with basic string formatting to make the output in your terminal look exactly like the truth tables you draw in your notebook.
+
+📗 Step 2 & 3: First-Order Logic & Predicate Logic
+
+(These two are grouped because they are usually coded using similar techniques in introductory AI).
+
+What to do: You need to translate English facts (e.g., "All humans are mortal. Socrates is a human.") into code that the computer can use to infer new truths ("Therefore, Socrates is mortal").
+
+What to learn: You need to understand Predicates (properties like is_human()) and Quantifiers ($\forall$ for "all", $\exists$ for "exists").
+
+How to implement: The easiest way to do this in standard Python without complex libraries is using Dictionaries and Lists to store facts, and Functions to represent rules (Forward Chaining).
+
+Facts: knowledge_base = {"human": ["Socrates", "Plato"], "god": ["Zeus"]}
+
+Rule: Write a loop that says if x in knowledge_base["human"]: print(f"{x} is mortal"), give all necessay python code for this section. and explain how these code works? what is the logic
+
+This is a great area to focus on. First-Order Logic (FOL) and Predicate Logic can sound intimidating mathematically, but when you map them to Python, they are actually just data structures (like lists) and conditional statements (if/else).
+
+Here is the complete Python code to represent this, followed by a breakdown of the exact logic happening behind the scenes.
+
+🐍 The Code (topic2_predicate.py)
+Copy and paste this into your editor to test it:
+
+Python
+# topic2_predicate.py
+
+# ---------------------------------------------------------
+# 1. THE KNOWLEDGE BASE (Facts we know are 100% true)
+# ---------------------------------------------------------
+knowledge_base = {
+    "human": ["Socrates", "Plato", "Aristotle"],
+    "god": ["Zeus", "Athena"],
+    "animal": ["Dog", "Cat"]
+}
+
+# ---------------------------------------------------------
+# 2. PREDICATES (Questions we ask about our facts)
+# ---------------------------------------------------------
+def is_human(entity):
+    # Returns True if the entity exists in the 'human' list
+    return entity in knowledge_base["human"]
+
+def is_god(entity):
+    # Returns True if the entity exists in the 'god' list
+    return entity in knowledge_base["god"]
+
+# ---------------------------------------------------------
+# 3. RULES / IMPLICATIONS (The logical "If... Then...")
+# ---------------------------------------------------------
+def is_mortal(entity):
+    # Logic Rule: ∀x (Human(x) → Mortal(x))
+    # "For all x, if x is a human, then x is mortal"
+    if is_human(entity):
+        return True
+    # We can add more rules: Animals are also mortal
+    elif entity in knowledge_base["animal"]:
+        return True
+    else:
+        return False
+
+def is_immortal(entity):
+    # Logic Rule: ∀x (God(x) → Immortal(x))
+    # "For all x, if x is a god, then x is immortal"
+    if is_god(entity):
+        return True
+    return False
+
+# ---------------------------------------------------------
+# 4. INFERENCE ENGINE (Generating new knowledge)
+# ---------------------------------------------------------
+print("=== PREDICATE LOGIC INFERENCE ===\n")
+
+# A mix of entities to test our logic on
+test_subjects = ["Socrates", "Zeus", "Apollo", "Dog"]
+
+for subject in test_subjects:
+    print(f"Testing subject: {subject}")
+    
+    if is_human(subject):
+        print(f"  [Fact] {subject} is a human.")
+        if is_mortal(subject):
+            print(f"  [Inferred] Therefore, {subject} is mortal.")
+            
+    elif is_god(subject):
+        print(f"  [Fact] {subject} is a god.")
+        if is_immortal(subject):
+            print(f"  [Inferred] Therefore, {subject} is immortal.")
+            
+    elif subject in knowledge_base["animal"]:
+        print(f"  [Fact] {subject} is an animal.")
+        if is_mortal(subject):
+            print(f"  [Inferred] Therefore, {subject} is mortal.")
+            
+    else:
+        print(f"  [Unknown] {subject} is not in our Knowledge Base.")
+    
+    print("-" * 40)
+🧠 How This Works (The Logic Explained)
+In Artificial Intelligence, First-Order Logic is built on three main pillars: Facts, Rules, and Inference. Here is how the code maps to those concepts:
+
+1. Facts (The Knowledge Base)
+
+The AI Concept: In logic, a predicate is a property or relation, like Human(Socrates). This simply means "Socrates is a human."
+
+The Python Logic: We don't have a built-in mathematical logic engine in standard Python, so we simulate this using a Dictionary. The keys ("human", "god") are the predicates, and the lists (["Socrates", "Plato"]) contain the constants/objects that satisfy that predicate.
+
+2. Rules (Implications)
+
+The AI Concept: We use variables and quantifiers to create rules. The most common is the Universal Quantifier (∀).
+
+∀x(Human(x)→Mortal(x))
+
+Translated: "For any entity x, IF x is a Human, THEN x implies Mortal."
+
+The Python Logic: We simulate the implication arrow (→) using if/return True statements. The function is_mortal(entity) checks the is_human() function. If the "IF" condition is met, it spits out a True "THEN" result.
+
+3. Inference (Forward Chaining)
+
+The AI Concept: Inference is the act of taking known facts, applying the rules, and discovering new facts without explicitly being told them. We use a rule called Modus Ponens:
+
+Premise 1: If P, then Q. (If human, then mortal)
+
+Premise 2: P is true. (Socrates is human)
+
+Conclusion: Therefore, Q is true. (Socrates is mortal)
+
+The Python Logic: The for loop at the bottom acts as our "Inference Engine." We give it a list of names. It looks up the name in the Knowledge Base (Premise 2), passes it through the Rule function (Premise 1), and prints out the final inferred truth (Conclusion). Notice we never explicitly wrote Mortal("Socrates") in our data—the code figured it out on its own.
+
+give different type of example code rather than mortal and god? give another type of example and their code
+
+Here is a completely different example. Instead of ancient Greek philosophy, let's use a very practical computer science example: A Role-Based Access Control System.
+
+This is how companies use First-Order Logic to determine who is allowed to access servers, commit code, or enter buildings.
+
+🐍 The Code (topic2_access_control.py)
+Copy and paste this into a new file to see how it works:
+
+Python
+# topic2_access_control.py
+
+# ---------------------------------------------------------
+# 1. THE KNOWLEDGE BASE (Facts we know are true)
+# ---------------------------------------------------------
+# We store roles and account statuses
+knowledge_base = {
+    "admin": ["Alice"],
+    "developer": ["Bob", "Charlie"],
+    "guest": ["Dave", "Eve"],
+    
+    # Another set of facts: Account Status
+    "active_account": ["Alice", "Bob", "Dave", "Eve"],
+    "suspended_account": ["Charlie"] # Charlie got suspended!
+}
+
+# ---------------------------------------------------------
+# 2. PREDICATES (Checking individual facts)
+# ---------------------------------------------------------
+def is_admin(user):
+    return user in knowledge_base["admin"]
+
+def is_developer(user):
+    return user in knowledge_base["developer"]
+
+def is_active(user):
+    return user in knowledge_base["active_account"]
+
+def is_suspended(user):
+    return user in knowledge_base["suspended_account"]
+
+# ---------------------------------------------------------
+# 3. RULES / IMPLICATIONS (Combining facts to make decisions)
+# ---------------------------------------------------------
+
+def can_access_server(user):
+    # Rule: ∀x (Admin(x) ∧ Active(x) → CanAccessServer(x))
+    # "For all users, IF they are an Admin AND Active, THEN they can access the server."
+    if is_admin(user) and is_active(user):
+        return True
+    return False
+
+def can_commit_code(user):
+    # Rule: ∀x ((Admin(x) ∨ Developer(x)) ∧ ¬Suspended(x) → CanCommit(x))
+    # "IF user is Admin OR Developer, AND NOT suspended, THEN they can commit code."
+    if (is_admin(user) or is_developer(user)) and not is_suspended(user):
+        return True
+    return False
+
+def requires_supervision(user):
+    # Rule: ∀x (Guest(x) → RequiresSupervision(x))
+    if user in knowledge_base["guest"]:
+        return True
+    return False
+
+# ---------------------------------------------------------
+# 4. INFERENCE ENGINE (Testing the logic)
+# ---------------------------------------------------------
+print("=== IT SYSTEM ACCESS CONTROL INFERENCE ===\n")
+
+# A list of employees to run through our logic engine
+test_users = ["Alice", "Bob", "Charlie", "Dave", "Frank"]
+
+for user in test_users:
+    print(f"Evaluating Permissions for: {user}")
+    
+    # 1. Check Server Access
+    if can_access_server(user):
+        print("  [+] Granted: Server Access.")
+    else:
+        print("  [-] Denied: Server Access.")
+        
+    # 2. Check Code Commit Access
+    if can_commit_code(user):
+        print("  [+] Granted: Can Commit Code.")
+    else:
+        print("  [-] Denied: Cannot Commit Code (Check role or suspension status).")
+        
+    # 3. Check Supervision Rules
+    if requires_supervision(user):
+        print("  [!] Warning: This user requires supervision (Guest).")
+        
+    # 4. Handle Unknown Entities
+    if not (is_admin(user) or is_developer(user) or user in knowledge_base["guest"]):
+        print("  [?] Unknown User: Not found in the company database.")
+        
+    print("-" * 50)
+🧠 The Logic Breakdown
+Here is how the First-Order Logic maps to this specific code:
+
+1. The Knowledge Base (Facts)
+
+We establish unary predicates (properties of a single object).
+
+Admin(Alice) is True.
+
+Suspended(Charlie) is True.
+
+Developer(Bob) is True.
+
+2. The Rules (Logical Connectives)
+Instead of just a simple implication (A→B), this example uses Logical AND (∧), Logical OR (∨), and Logical NOT (¬) inside the rules to make complex inferences:
+
+can_access_server uses AND: You must be an admin and active. Even if Dave is active, he isn't an admin, so it fails.
+
+can_commit_code uses OR and NOT: You can be an admin or a developer, but you must not be suspended. Charlie is a developer, but because he is in the suspended_account list, the not is_suspended() check causes the whole rule to evaluate to False.
+
+3. The Inference
+The loop processes "Charlie".
+
+It checks is_developer("Charlie") → True.
+
+It checks is_suspended("Charlie") → True.
+
+The rule evaluates: (False OR True) AND (NOT True) → True AND False → False.
+
+Inference: Charlie cannot commit code.
+
+This is exactly how AI inference engines work in the real world: you feed them raw data (lists/databases), define the logical constraints (functions), and let the program deduce the permissions automatically!
+
+give more big code which contain more content and values to test
+
+Here is a much larger and more comprehensive example. We will build a University Academic & Graduation System.
+
+This example is excellent for studying because it introduces Python's all() and any() functions, which are the exact coding equivalents of the mathematical Universal Quantifier (∀) and Existential Quantifier (∃).
+
+🐍 The Code (topic2_university_logic.py)
+Create this file and run it. It contains a large dataset and complex logical rules.
+
+Python
+# topic2_university_logic.py
+
+# =========================================================
+# 1. THE KNOWLEDGE BASE (Large Dataset)
+# =========================================================
+knowledge_base = {
+    # Unary Predicates (Properties of one entity)
+    "cs_majors": ["Alice", "Bob", "Charlie", "David"],
+    "math_majors": ["Eve", "Frank"],
+    "paid_tuition": ["Alice", "Bob", "Eve", "Frank"],
+    "academic_probation": ["Charlie"],
+    
+    # Binary Predicates (Relationships between two entities)
+    # Maps Student -> List of completed courses
+    "completed_courses": {
+        "Alice": ["CS101", "CS102", "MATH101", "AI_401"],
+        "Bob": ["CS101", "MATH101"],
+        "Charlie": ["CS101", "CS102"],
+        "David": ["CS101", "CS102", "MATH101", "AI_401"],
+        "Eve": ["MATH101", "MATH102", "MATH201"],
+        "Frank": ["MATH101"]
+    },
+    
+    # Course Prerequisites
+    "prerequisites": {
+        "AI_401": ["CS101", "CS102", "MATH101"],
+        "CS102": ["CS101"],
+        "MATH201": ["MATH101", "MATH102"]
+    }
+}
+
+# =========================================================
+# 2. BASIC PREDICATES (Checking facts)
+# =========================================================
+def is_cs_major(student):
+    return student in knowledge_base["cs_majors"]
+
+def has_paid(student):
+    return student in knowledge_base["paid_tuition"]
+
+def on_probation(student):
+    return student in knowledge_base["academic_probation"]
+
+def has_completed(student, course):
+    return course in knowledge_base["completed_courses"].get(student, [])
+
+def get_prereqs(course):
+    return knowledge_base["prerequisites"].get(course, [])
+
+# =========================================================
+# 3. COMPLEX RULES (Using ∀ and ∃ Logic)
+# =========================================================
+
+def can_take_course(student, course):
+    """
+    Rule: A student can take a course IF they are NOT on probation, 
+    AND they have completed ALL prerequisites.
+    Logic: ¬Probation(s) ∧ ∀c (Prereq(c, course) → Completed(s, c))
+    """
+    if on_probation(student):
+        return False
+        
+    prereqs = get_prereqs(course)
+    # Python's all() acts exactly like the Universal Quantifier (∀)
+    has_all_prereqs = all(has_completed(student, p) for p in prereqs)
+    
+    return has_all_prereqs
+
+def is_eligible_for_cs_graduation(student):
+    """
+    Rule: Must be a CS major, paid tuition, NOT on probation, 
+    AND completed all core CS courses (CS101, CS102, AI_401).
+    """
+    core_requirements = ["CS101", "CS102", "AI_401"]
+    
+    if not is_cs_major(student):
+        return False
+    if not has_paid(student):
+        return False
+    if on_probation(student):
+        return False
+        
+    # ∀c (CoreRequirement(c) → Completed(s, c))
+    meets_requirements = all(has_completed(student, c) for c in core_requirements)
+    return meets_requirements
+
+def needs_advising_intervention(student):
+    """
+    Rule: A student needs intervention IF they are on probation 
+    OR they haven't passed ANY courses.
+    Logic: Probation(s) ∨ ¬∃c (Completed(s, c))
+    """
+    if on_probation(student):
+        return True
+        
+    courses_taken = knowledge_base["completed_courses"].get(student, [])
+    
+    # If the list is empty, they haven't completed any courses
+    if len(courses_taken) == 0:
+        return True
+        
+    return False
+
+# =========================================================
+# 4. INFERENCE ENGINE (Processing the data)
+# =========================================================
+print("=== UNIVERSITY REGISTRATION & GRADUATION INFERENCE ===\n")
+
+all_students = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "GhostStudent"]
+
+for student in all_students:
+    print(f"--- Student Profile: {student} ---")
+    
+    # 1. Check Graduation Eligibility
+    if is_eligible_for_cs_graduation(student):
+        print("  🎓 STATUS: Cleared for CS Graduation!")
+    else:
+        print("  📚 STATUS: Continuing Student.")
+        
+    # 2. Check AI Course Eligibility
+    target_course = "AI_401"
+    if can_take_course(student, target_course):
+        print(f"  ✅ REGISTRATION: Allowed to enroll in {target_course}.")
+    else:
+        print(f"  ❌ REGISTRATION: Cannot enroll in {target_course} (Check prereqs or probation status).")
+        
+    # 3. Check for Advising Needs
+    if needs_advising_intervention(student):
+        print("  ⚠️ ALERT: Flagged for mandatory advising intervention!")
+        
+    print() # Blank line for readability
+🧠 How the Advanced Logic Translates to Python
+This code maps perfectly to the First-Order Logic concepts you need to know for your exam:
+
+Universal Quantifier (∀ for "All"):
+In First-Order Logic, if you want to say "Student x has taken all prerequisites for AI," you write:
+∀c(Prerequisite(c,AI_401)→Completed(x,c))
+In Python: We use the built-in all() function. all(has_completed(student, p) for p in prereqs) loops through the list and returns True only if every single check is True.
+
+Existential Quantifier (∃ for "Exists"):
+If you want to say "There exists at least one course that the student has completed" (meaning they aren't failing everything), you write:
+∃c(Completed(x,c))
+In Python: You can use the any() function, or simply check if the list length is greater than 0 (len(courses_taken) > 0).
+
+Logical Negation (¬ for "Not"):
+Instead of just checking if someone is a CS major, we also check if they are not on probation using not on_probation(student).
+
+🔍 Test Cases Explained:
+When you run the code, look at how the Inference Engine handles different edge cases:
+
+Alice: Passes everything. Has all prereqs, paid tuition, not on probation. Graduates.
+
+David: Has the exact same courses as Alice, but did not pay tuition (he's missing from the paid_tuition list). Therefore, his graduation rule fails!
+
+Charlie: Has taken some courses, but is on the academic_probation list. He gets blocked from registering for classes and is flagged for intervention.
+
+give just the code, don't add comment or icon type things
+
+Python
+knowledge_base = {
+    "cs_majors": ["Alice", "Bob", "Charlie", "David"],
+    "math_majors": ["Eve", "Frank"],
+    "paid_tuition": ["Alice", "Bob", "Eve", "Frank"],
+    "academic_probation": ["Charlie"],
+    "completed_courses": {
+        "Alice": ["CS101", "CS102", "MATH101", "AI_401"],
+        "Bob": ["CS101", "MATH101"],
+        "Charlie": ["CS101", "CS102"],
+        "David": ["CS101", "CS102", "MATH101", "AI_401"],
+        "Eve": ["MATH101", "MATH102", "MATH201"],
+        "Frank": ["MATH101"]
+    },
+    "prerequisites": {
+        "AI_401": ["CS101", "CS102", "MATH101"],
+        "CS102": ["CS101"],
+        "MATH201": ["MATH101", "MATH102"]
+    }
+}
+
+def is_cs_major(student):
+    return student in knowledge_base["cs_majors"]
+
+def has_paid(student):
+    return student in knowledge_base["paid_tuition"]
+
+def on_probation(student):
+    return student in knowledge_base["academic_probation"]
+
+def has_completed(student, course):
+    return course in knowledge_base["completed_courses"].get(student, [])
+
+def get_prereqs(course):
+    return knowledge_base["prerequisites"].get(course, [])
+
+def can_take_course(student, course):
+    if on_probation(student):
+        return False
+        
+    prereqs = get_prereqs(course)
+    return all(has_completed(student, p) for p in prereqs)
+
+def is_eligible_for_cs_graduation(student):
+    core_requirements = ["CS101", "CS102", "AI_401"]
+    
+    if not is_cs_major(student) or not has_paid(student) or on_probation(student):
+        return False
+        
+    return all(has_completed(student, c) for c in core_requirements)
+
+def needs_advising_intervention(student):
+    if on_probation(student):
+        return True
+        
+    courses_taken = knowledge_base["completed_courses"].get(student, [])
+    return len(courses_taken) == 0
+
+all_students = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank", "GhostStudent"]
+
+for student in all_students:
+    print(student)
+    
+    if is_eligible_for_cs_graduation(student):
+        print("Graduation Eligible")
+    else:
+        print("Not Graduation Eligible")
+        
+    target_course = "AI_401"
+    if can_take_course(student, target_course):
+        print("Can enroll in", target_course)
+    else:
+        print("Cannot enroll in", target_course)
+        
+    if needs_advising_intervention(student):
+        print("Needs advising intervention")
+        
+    print("")
+explain this code properly, how it cover the topic 2 and 3
+
+This code demonstrates how the mathematical concepts of Topic 2 (First-Order Logic) and Topic 3 (Predicate Logic) are translated into functional programming.
+
+Here is the exact breakdown of how the code covers these two topics.
+
+1. How it covers Topic 3: Predicate Logic
+Predicate Logic evaluates whether a specific property or relationship involving objects is True or False. In the code, this is handled by the data structures and the basic functions.
+
+Constants / Objects: The specific names in the strings ("Alice", "CS101") represent the constants in your logic universe.
+
+Unary Predicates: These describe a property of a single object. In formal logic, you would write CSMajor(Alice). In the code, this is implemented as the function is_cs_major(student). It takes one argument and returns True or False.
+
+Binary Predicates: These describe a relationship between two objects. In formal logic, you would write Completed(Alice,CS101). In the code, this is implemented as has_completed(student, course). It takes two arguments and checks the dictionary to see if the relationship exists.
+
+2. How it covers Topic 2: First-Order Logic (FOL)
+First-Order Logic builds upon Predicate Logic by introducing Quantifiers (All, Exists) to make complex statements about groups of objects, rather than just individuals.
+
+The Universal Quantifier (∀ for "For All"):
+In FOL, if a student wants to take a course, they must have completed all of its prerequisites. The formal logic is:
+∀p(Prerequisite(p,course)→Completed(student,p))
+
+The code covers this using Python's all() function inside can_take_course:
+return all(has_completed(student, p) for p in prereqs)
+This line acts as the universal quantifier, iterating through the entire set of prerequisites and only returning True if the predicate holds true for every single one.
+
+The Existential Quantifier (∃ for "There Exists"):
+In FOL, we might say a student is participating if there exists at least one course they have taken.
+∃c(Completed(student,c))
+
+The code covers this in the needs_advising_intervention function. To find out if a student has taken zero courses, it checks if the existential quantifier is false by measuring the length of their course list:
+return len(courses_taken) == 0 (which is the equivalent of ¬∃c).
+
+3. Logical Connectives and Inference
+Both topics rely on logical operators to form rules and infer new knowledge.
+
+Connectives (∧, ∨, ¬): The is_eligible_for_cs_graduation function uses logical AND, OR, and NOT to combine multiple predicates into a strict rule.
+if not is_cs_major(student) or not has_paid(student) or on_probation(student):
+This translates the mathematical logic: ¬CSMajor(x)∨¬Paid(x)∨Probation(x).
+
+Forward Chaining (Inference Engine):
+The final for student in all_students: loop acts as the inference engine. It takes the raw, disconnected facts from the knowledge_base, runs them through the First-Order Logic rules, and deduces entirely new facts (like "Alice is Graduation Eligible") without those facts being explicitly written in the original database.
+
+explain more with example that used in the code
+
+Let's trace exactly what happens in the code when it runs, using specific students from the knowledge_base. This is exactly how you should explain it to your teacher if asked to trace the logic.
+
+1. Tracing Predicate Logic (Topics 3)
+Predicate logic is about asking true/false questions about facts.
+
+Example A: Unary Predicate (One Object)
+In math, you write: CSMajor(Alice)
+In the code, the loop reaches "Alice". It calls is_cs_major("Alice").
+
+The function looks at knowledge_base["cs_majors"].
+
+Since "Alice" is in ["Alice", "Bob", "Charlie", "David"], it returns True.
+
+Example B: Binary Predicate (Two Objects)
+In math, you write: Completed(Alice,CS101)
+In the code, it calls has_completed("Alice", "CS101").
+
+The function looks at knowledge_base["completed_courses"]["Alice"].
+
+Since "CS101" is inside ["CS101", "CS102", "MATH101", "AI_401"], it returns True.
+
+2. Tracing First-Order Logic (Topic 2)
+First-Order logic uses rules to combine those simple predicates using Quantifiers.
+
+Example C: The Universal Quantifier (∀) in Action
+Let's trace can_take_course("Alice", "AI_401").
+The mathematical rule is: "For all prerequisites p of AI_401, Alice must have completed p."
+∀p(Prerequisite(p,AI_401)→Completed(Alice,p))
+
+Here is how the code's all() function executes this:
+
+It fetches the prerequisites for "AI_401", which are ["CS101", "CS102", "MATH101"].
+
+The all() function checks them one by one:
+
+has_completed("Alice", "CS101") → True
+
+has_completed("Alice", "CS102") → True
+
+has_completed("Alice", "MATH101") → True
+
+Because every single check was True, all() returns True. Alice is allowed to take the course.
+
+Example D: When the Universal Quantifier Fails
+Now let's trace can_take_course("Bob", "AI_401").
+
+Prerequisites are still ["CS101", "CS102", "MATH101"].
+
+The all() function checks them:
+
+has_completed("Bob", "CS101") → True
+
+has_completed("Bob", "CS102") → False (Bob only took CS101 and MATH101).
+
+Because one predicate failed, the all() statement immediately returns False. The logic proves Bob cannot take AI_401.
+
+3. Tracing Complex Rules and Logical Connectives
+Let's look at is_eligible_for_cs_graduation(student).
+The rule requires combining multiple predicates using AND (∧), OR (∨), and NOT (¬).
+
+Example E: The "David" Edge Case
+Let's evaluate "David" for graduation.
+Look at the knowledge_base for David:
+
+He is a CS Major.
+
+He completed all core courses (CS101, CS102, AI_401).
+
+But, he is missing from the paid_tuition list.
+
+When the code runs is_eligible_for_cs_graduation("David"):
+
+It evaluates: if not is_cs_major("David") → False (he is a major).
+
+It evaluates: or not has_paid("David") → True (he has NOT paid).
+
+Because one of the "OR" conditions in that if statement triggered as True, the function immediately returns False.
+
+Inference: The program prints "Not Graduation Eligible" for David, even though his course list was perfect.
+
+Example F: The "GhostStudent" Edge Case (Existential Logic)
+Let's evaluate "GhostStudent" using needs_advising_intervention("GhostStudent").
+This student is not in any list in the knowledge base.
+
+The code checks on_probation("GhostStudent") → False.
+
+It grabs their courses: courses_taken = knowledge_base["completed_courses"].get("GhostStudent", []). Since they aren't in the dictionary, it returns an empty list [].
+
+It checks the length: len(courses_taken) == 0. This is True.
+
+Inference: Because the student exists but has absolutely zero data/courses (the Existential Quantifier for courses is False: ¬∃c), the system flags them for intervention.
+
+what is predicate and fol?
+
+It is very smart to ask this! You've seen the code, but for an exam, you need to know how to explain the actual theory behind those terms.
+
+Here is the simple, plain-English breakdown of what Predicates and First-Order Logic (FOL) actually are in Artificial Intelligence.
+
+1. What is a Predicate? (Predicate Logic)
+A Predicate is essentially a statement or a question about an object (or multiple objects) that evaluates to either True or False.
+
+Think of it like a property or a relationship. Instead of just saying "Socrates is a man" (Propositional Logic), Predicate logic breaks it down into an object and its property.
+
+Syntax: Predicate(Object)
+
+Unary Predicate (One Object): Describes a property.
+
+Human(Socrates) → "Socrates is a human." (True)
+
+Even(5) → "5 is an even number." (False)
+
+Binary/n-ary Predicate (Multiple Objects): Describes a relationship.
+
+Brother(Thor,Loki) → "Thor is the brother of Loki." (True)
+
+Greater(3,10) → "3 is greater than 10." (False)
+
+In your code: The functions like is_cs_major("Alice") or has_completed("Alice", "CS101") are your predicates. They look at objects and return True or False.
+
+2. What is FOL? (First-Order Logic)
+First-Order Logic (FOL) is simply Predicate Logic plus Quantifiers.
+
+While Predicate Logic lets you talk about specific objects (like Socrates or Alice), FOL lets you make sweeping rules about groups of objects without having to name every single one of them. It does this using two powerful mathematical symbols:
+
+A. The Universal Quantifier (∀) - "For All"
+This means the rule applies to every single thing in your universe.
+
+Math: ∀x(Human(x)→Mortal(x))
+
+English: "For ALL x, if x is a Human, then x is Mortal." (All humans are mortal).
+
+Code Equivalent: Python's all() function.
+
+B. The Existential Quantifier (∃) - "There Exists"
+This means the rule only needs to be true for at least one thing in your universe.
+
+Math: ∃x(Bird(x)∧CannotFly(x))
+
+English: "There EXISTS at least one x, where x is a Bird AND x cannot fly." (Some birds cannot fly, like penguins).
+
+Code Equivalent: Python's any() function, or checking if a list length is > 0.
+
+Summary: The Difference Between Them
+To put it in perspective for tomorrow's exam:
+
+Predicate Logic gives you the vocabulary to state basic facts: Student(Alice), Course(AI_401).
+
+First-Order Logic gives you the grammar to create complex, intelligent rules about those facts: ∀x(Student(x)∧Passed(x,AI_401)→Graduate(x)).
+
+import random
+
+import math
+
+
+
+# ---------------- optional reproducibility ----------------
+
+# comment this out if you want different results each run
+
+random.seed(None)
+
+
+
+# ---------------- activation functions ----------------
+
+def relu(x):
+
+    return [max(0, i) for i in x]
+
+
+
+def relu_deriv(x):
+
+    return [1 if i > 0 else 0 for i in x]
+
+
+
+def softmax(x):
+
+    exps = [math.exp(i - max(x)) for i in x]
+
+    s = sum(exps)
+
+    return [i / s for i in exps]
+
+
+
+def loss_fn(p, y):
+
+    return -math.log(p[y] + 1e-9)
+
+
+
+
+
+# ---------------- dataset ----------------
+
+def gen_data(n=100, f=10):
+
+    X, Y = [], []
+
+    for _ in range(n):
+
+        x = [random.uniform(-1, 1) for _ in range(f)]
+
+        y = 1 if sum(x) > 0 else 0
+
+        X.append(x)
+
+        Y.append(y)
+
+    return X, Y
+
+
+
+X, Y = gen_data()
+
+
+
+# ---------------- shuffle helper ----------------
+
+def shuffle_data(X, Y):
+
+    combined = list(zip(X, Y))
+
+    random.shuffle(combined)
+
+    X, Y = zip(*combined)
+
+    return list(X), list(Y)
+
+
+
+# ---------------- weight init (better than uniform) ----------------
+
+def rand_mat(r, c):
+
+    return [[random.gauss(0, 0.1) for _ in range(c)] for _ in range(r)]
+
+
+
+W1 = rand_mat(10, 5)
+
+W2 = rand_mat(5, 2)
+
+
+
+lr = 0.01
+
+epochs = 100
+
+
+
+# ---------------- training ----------------
+
+for epoch in range(epochs):
+
+
+
+    # shuffle every epoch (IMPORTANT)
+
+    X, Y = shuffle_data(X, Y)
+
+
+
+    total_loss = 0
+
+    correct = 0
+
+
+
+    for x, y in zip(X, Y):
+
+
+
+        # ---------- forward ----------
+
+        h = [sum(x[i] * W1[i][j] for i in range(10)) for j in range(5)]
+
+        h_relu = relu(h)
+
+
+
+        o = [sum(h_relu[i] * W2[i][j] for i in range(5)) for j in range(2)]
+
+        p = softmax(o)
+
+
+
+        loss = loss_fn(p, y)
+
+        total_loss += loss
+
+
+
+        pred = p.index(max(p))
+
+        if pred == y:
+
+            correct += 1
+
+
+
+        # ---------- backward ----------
+
+        grad_o = p[:]
+
+        grad_o[y] -= 1
+
+
+
+        # update W2
+
+        for i in range(5):
+
+            for j in range(2):
+
+                W2[i][j] -= lr * grad_o[j] * h_relu[i]
+
+
+
+        # backprop hidden
+
+        grad_h = [0] * 5
+
+        for i in range(5):
+
+            for j in range(2):
+
+                grad_h[i] += grad_o[j] * W2[i][j]
+
+
+
+        grad_h = [grad_h[i] * relu_deriv(h)[i] for i in range(5)]
+
+
+
+        # update W1
+
+        for i in range(10):
+
+            for j in range(5):
+
+                W1[i][j] -= lr * grad_h[j] * x[i]
+
+
+
+    # ---------------- output ----------------
+
+    if (epoch + 1) % 10 == 0:
+
+        avg_loss = total_loss / len(X)
+
+        acc = (correct / len(X)) * 100
+
+
+
+        print(
+
+            f"Epoch {epoch+1}/{epochs} "
+
+            f"- Loss: {avg_loss:.4f} "
+
+            f"- Accuracy: {acc:.2f}%"
+
+        )
+
+
+
+print("\nTraining complete.") what is this code: explain properly
+
+This is an absolutely perfect example of what your teacher is looking for in Topic 4: Basic Neural Network (The Manual Way).
+
+In fact, this code takes the "from scratch" rule even further than my previous example! While my example used numpy to handle the matrix math, this code uses completely raw Python lists and loops. It relies only on the built-in math and random modules.
+
+Here is the proper, step-by-step explanation of what this code does and the logic behind it, which you can use to explain it to your teacher.
+
+🧠 High-Level Overview
+This code builds a Multi-Layer Perceptron (MLP). Its goal is to look at 10 random numbers, add them together, and predict if the sum is positive or negative.
+The network architecture is:
+
+Input Layer: 10 neurons (features)
+
+Hidden Layer: 5 neurons
+
+Output Layer: 2 neurons (representing the probabilities for "Class 0: Negative" and "Class 1: Positive")
+
+Here is the breakdown of how the code achieves this.
+
+1. The Math Tools (Activation & Loss)
+Before training, the code defines the mathematical functions the network will use:
+
+relu(x): Rectified Linear Unit. This is the activation function for the hidden layer. It simply turns any negative number into a 0.
+
+relu_deriv(x): The derivative of ReLU. Used during backpropagation. It returns 1 if the input was positive, and 0 if it was negative.
+
+softmax(x): This goes on the final output layer. It squashes the final numbers into percentages (probabilities) that add up to 1.0 (e.g., 90% sure it's Class 1, 10% sure it's Class 0).
+
+loss_fn(p, y): Cross-Entropy Loss. It calculates how "wrong" the network's prediction was. The 1e-9 is a tiny number added so the math doesn't crash by trying to calculate the log of exactly zero.
+
+2. The Dataset (gen_data)
+The network needs data to learn from.
+
+It generates 100 rows of data (n=100).
+
+Each row has 10 random numbers (f=10) between -1 and 1.
+
+The Rule: If the sum of those 10 numbers is greater than 0, the target label y is 1. If the sum is less than 0, the label is 0.
+
+3. Initialization
+W1 (Weights 1): A 10x5 matrix connecting the Input layer to the Hidden layer.
+
+W2 (Weights 2): A 5x2 matrix connecting the Hidden layer to the Output layer.
+
+They are initialized using random.gauss (a normal distribution), which is much better for neural networks than flat uniform randomness.
+
+4. The Training Loop (The Core Logic)
+The network trains for 100 epochs (loops over the whole dataset). Inside the epoch, it processes the data row by row:
+
+Step A: Forward Propagation (forward)
+The data moves forward through the network. Because you aren't using numpy, the code uses nested for loops to multiply the inputs by the weights:
+
+Multiply the 10 inputs by W1 to get 5 hidden values (h).
+
+Pass h through the relu function (h_relu).
+
+Multiply those 5 hidden values by W2 to get 2 raw output values (o).
+
+Pass o through softmax to get the final prediction probabilities (p).
+
+Step B: Backpropagation (backward)
+This calculates the error and finds the gradients (how much each weight contributed to the error).
+
+grad_o: The error at the output layer. Because the code uses Softmax + Cross-Entropy, the calculus simplifies beautifully to just p−y (Prediction minus Actual). That is what grad_o[y] -= 1 is doing mathematically.
+
+grad_h: The error is passed backward to the hidden layer by multiplying the output error by W2, and then multiplying by the derivative of the ReLU function (relu_deriv).
+
+Step C: Updating Weights
+Using Stochastic Gradient Descent (SGD), the code adjusts the weights slightly to make them more accurate for the next time.
+The mathematical formula is: W 
+new
+​
+ =W 
+old
+​
+ −α×gradient
+
+In the code, lr is α (the learning rate).
+
+You can see this exactly in lines like: W2[i][j] -= lr * grad_o[j] * h_relu[i].
+
+Why this is a great script for your exam:
+If Mahbub Sir asks you to prove you understand the math without relying on libraries, this script does exactly that. Because it uses nested for loops for W1[i][j] instead of a magic numpy.dot() command, you can physically see every single multiplication happening to every single weight during the forward and backward passes.
+
+# comment this out if you want different results each run
+
+random.seed(None), what this line does?
+
+🎲 What is a "Seed" in Programming?
+To understand this line, you first need to know how computers generate random numbers.
+
+Computers are purely logical machines; they can't do anything truly "random" on their own. Instead, they use complex math formulas to generate Pseudo-Random Numbers. These formulas need a starting point to begin their calculations. That starting point is called the seed.
+
+Here is how random.seed() controls that starting point:
+
+1. Fixed Seed (For Reproducibility)
+If you give the seed a specific integer, like random.seed(42), the math formula starts from the exact same point every single time you run the script.
+
+Result: The "random" numbers generated (like your initialized weights or shuffled data) will be 100% identical every time you click Run.
+
+Why use this? It is crucial for debugging Neural Networks. If your network suddenly breaks, you want to be able to run it again with the exact same data and weights to figure out what went wrong.
+
+2. None Seed (For True Unpredictability)
+When you use random.seed(None) (which is what your code has), you are telling Python: "Don't use a fixed starting point. Use the current system time (down to the millisecond) as the seed."
+
+Result: Because the system time is always changing, the math formula gets a different starting point every time you run the script. Your weights and data shuffling will be completely different each run.
+
+💡 A Note on the Comment in Your Code
+The comment above that line says:
+# comment this out if you want different results each run
+
+There is actually a slight contradiction in the code you pasted!
+
+Because the code uses random.seed(None), it is already going to give you different results each run. Usually, if a programmer writes that comment, the code looks like this:
+
+Python
+# comment this out if you want different results each run
+random.seed(42) # Or any other number
+If you want to test this yourself:
+
+Change the line to random.seed(10) and run your code twice. Notice how the final Loss and Accuracy are the exact same both times.
+
+Change it back to random.seed(None) and run it twice. The final Loss and Accuracy will change because the random starting weights are different.
+
+
+
+# ---------------- activation functions ----------------
+
+def relu(x):
+
+    return [max(0, i) for i in x]
+
+
+
+def relu_deriv(x):
+
+    return [1 if i > 0 else 0 for i in x]
+
+
+
+def softmax(x):
+
+    exps = [math.exp(i - max(x)) for i in x]
+
+    s = sum(exps)
+
+    return [i / s for i in exps]
+
+
+
+def loss_fn(p, y):
+
+    return -math.log(p[y] + 1e-9)
+
+This block of code defines the mathematical engine of your neural network. These four functions tell the network how to process signals and how to calculate its mistakes.
+
+Here is the exact breakdown of the math and the Python logic for each function.
+
+1. relu(x): The Rectified Linear Unit
+What it is: This is the activation function used in the hidden layer. Its job is simple: if a number is positive, keep it. If a number is negative, turn it into a zero.
+The Math: f(x)=max(0,x)
+The Code: ```python
+return [max(0, i) for i in x]
+
+It uses a Python list comprehension to look at every number `i` in the input list `x`. The `max(0, i)` part ensures that if `i` is negative (like -5), it outputs 0. If `i` is positive (like 3.2), it outputs 3.2.
+
+### 2. `relu_deriv(x)`: The Derivative of ReLU
+**What it is:** During Backpropagation, the network needs to know the "slope" or derivative of the activation function to figure out how to update the weights. 
+**The Math:** * If $x > 0$, the slope is $1$.
+* If $x \le 0$, the slope is $0$.
+**The Code:**
+```python
+return [1 if i > 0 else 0 for i in x]
+If the value i is greater than 0, it passes back a 1 (meaning the signal is allowed to flow backward to update the weights). If it's 0 or less, it passes back a 0 (killing the gradient flow).
+
+3. softmax(x): Converting to Probabilities
+What it is: This goes on your final output layer. Neural networks naturally output raw, messy numbers (like [2.5, -1.2]). Softmax forces these numbers into percentages that add up exactly to 1.0 (e.g., [0.97, 0.03]).
+The Math: σ(z 
+i
+​
+ )= 
+∑e 
+z 
+j
+​
+ 
+ 
+e 
+z 
+i
+​
+ 
+ 
+​
+ 
+The Code (and a very smart trick):
+
+Python
+exps = [math.exp(i - max(x)) for i in x]
+Normally, Softmax just calculates e 
+x
+ . But exponentials grow incredibly fast. If the network outputs a large number like 1000, math.exp(1000) will cause an Overflow Error and crash your Python script.
+By doing i - max(x), it subtracts the largest number from everything. This means the highest number being exponentiated is 0 (since X 
+max
+​
+ −X 
+max
+​
+ =0), and e 
+0
+ =1. This is called Numerical Stability, and it's a pro-level way to write Softmax! Then, s = sum(exps) calculates the total, and i / s divides each value by that total to get the final percentages.
+
+4. loss_fn(p, y): Cross-Entropy Loss
+What it is: This calculates how "wrong" the network's prediction was. The goal of the network is to push this loss number as close to 0 as possible.
+The Math: L=−log(p 
+y
+​
+ )
+The Code:
+
+Python
+return -math.log(p[y] + 1e-9)
+p is the list of probabilities output by Softmax. y is the correct answer (either index 0 or 1). p[y] looks at how confident the network was in the correct answer.
+
+-math.log() heavily punishes the network if its confidence in the correct answer is low.
+
+The 1e-9 trick: 1e-9 is scientific notation for a microscopic number (0.000000001). Why is it there? In math, the log of zero (log(0)) is undefined. If the network outputs exactly 0.0 for the correct class, math.log(0) will instantly crash Python with a ValueError. Adding that tiny number ensures the value inside the log is never perfectly zero!
+
+# ---------------- dataset ----------------
+
+def gen_data(n=100, f=10):
+
+    X, Y = [], []
+
+    for _ in range(n):
+
+        x = [random.uniform(-1, 1) for _ in range(f)]
+
+        y = 1 if sum(x) > 0 else 0
+
+        X.append(x)
+
+        Y.append(y)
+
+    return X, Y
+
+
+
+X, Y = gen_data()
+
+This block of code is responsible for creating the synthetic dataset (fake data) that your neural network is going to train on.
+
+Since you aren't loading a real-world dataset (like an Excel file of housing prices), you need to generate a "toy" problem for the network to solve. Here is exactly how this function builds that problem.
+
+1. The Function Setup
+Python
+def gen_data(n=100, f=10):
+    X, Y = [], []
+n=100: This is the number of samples (or rows) in your dataset. By default, it will generate 100 examples for the network to study.
+
+f=10: This is the number of features (or columns) per sample. Think of this as 10 different pieces of information the network gets to look at before making a guess.
+
+X, Y: X is the standard math notation for your input data (the features). Y is the standard notation for your labels (the correct answers).
+
+2. Generating the Inputs (X)
+Python
+x = [random.uniform(-1, 1) for _ in range(f)]
+For each of the 100 rows, this line creates a list of 10 random decimal numbers.
+
+random.uniform(-1, 1) means every single number will be completely random, but strictly bounded between -1.0 and 1.0 (for example: 0.45, -0.89, 0.12).
+
+This list of 10 numbers becomes one single data point (x).
+
+3. Creating the "Secret Rule" (Y)
+Python
+y = 1 if sum(x) > 0 else 0
+This is the most important line in the block. This is the logic rule the neural network will try to learn.
+
+It takes the 10 random numbers generated in the previous step and adds them all together (sum(x)).
+
+If the total sum is a positive number (> 0): The label y becomes 1.
+
+If the total sum is a negative number (≤ 0): The label y becomes 0.
+
+The neural network does not know this rule. During training, it will only see the 10 random numbers and the final label (0 or 1). It has to adjust its own math (the weights) to figure out that adding the numbers together is the key to getting the right answer!
+
+4. Putting it Together
+Python
+        X.append(x)
+        Y.append(y)
+    return X, Y
+
+X, Y = gen_data()
+The script loops 100 times, creating a row of 10 numbers and its matching label each time, and appends them to the master X and Y lists.
+
+If you were to print out the first row of your newly generated data, it would look something like this:
+
+X[0] (The Inputs): [0.5, -0.2, 0.8, -0.9, 0.1, 0.4, -0.3, 0.7, -0.1, 0.2]
+
+Y[0] (The Answer): 1 (because the sum of those numbers is 1.2, which is greater than 0)
+
+
+
+# ---------------- shuffle helper ----------------
+
+def shuffle_data(X, Y):
+
+    combined = list(zip(X, Y))
+
+    random.shuffle(combined)
+
+    X, Y = zip(*combined)
+
+    return list(X), list(Y)
+
+This block of code is a clever little helper function designed to shuffle your dataset.
+
+In machine learning, if you feed a neural network the exact same data in the exact same order during every epoch (training loop), it can sometimes memorize the order of the data rather than actually learning the rules. Shuffling the data prevents this and helps the network generalize better.
+
+However, you have a problem when shuffling: your inputs (X) and your answers (Y) are in two separate lists. If you shuffle X but forget to shuffle Y in the exact same way, your inputs will suddenly point to the wrong answers, and your network will learn complete garbage!
+
+Here is how this function brilliantly solves that problem using Python's zip command:
+
+Line-by-Line Breakdown
+1. "Gluing" them together
+
+Python
+combined = list(zip(X, Y))
+The zip() function takes two lists and "zips" them together like a jacket. It takes the first item of X and pairs it with the first item of Y, creating a single package (a tuple).
+
+Before: X = [DataA, DataB], Y = [LabelA, LabelB]
+
+After: combined = [(DataA, LabelA), (DataB, LabelB)]
+
+2. Shuffling the pairs
+
+Python
+random.shuffle(combined)
+Now that the data and its correct label are securely glued together in a single package, random.shuffle() can safely mix up the order of the list. Even though the order of the rows changes, DataA is still permanently attached to LabelA.
+
+3. "Unzipping" them back apart
+
+Python
+X, Y = zip(*combined)
+In Python, using zip(*...) with the asterisk (*) is the trick to unzip a list of pairs. It rips the packages back open, putting all the data back into an X pile and all the labels back into a Y pile. The order is now totally randomized, but they still perfectly line up with each other!
+
+4. Returning the lists
+
+Python
+return list(X), list(Y)
+Because the unzipping process creates immutable "tuples" (lists you can't edit), this final line just converts them back into standard Python lists so your neural network can easily use them in the next training loop.
+
+# ---------------- weight init (better than uniform) ----------------
+
+def rand_mat(r, c):
+
+    return [[random.gauss(0, 0.1) for _ in range(c)] for _ in range(r)]
+
+
+
+W1 = rand_mat(10, 5)
+
+W2 = rand_mat(5, 2)
+
+
+
+lr = 0.01
+
+epochs = 100
+
+This block of code is where you set up the starting conditions and the rules for learning before the neural network actually begins training.
+Gaussian normal distribution bell curve, AI generated
+Getty Images
+
+Here is exactly what these variables mean and the math trick hiding in the rand_mat function.
+
+1. The Weight Initializer (rand_mat)
+Python
+def rand_mat(r, c):
+    return [[random.gauss(0, 0.1) for _ in range(c)] for _ in range(r)]
+This function generates an empty matrix (a grid of numbers) with r rows and c columns, and fills it with random starting weights. But notice the code comment: "(better than uniform)".
+
+Uniform Random: If you just used random.uniform(-1, 1), the starting weights would be spread out completely flatly. Some would be very large, some very small. In neural networks, large starting weights can cause the math to "explode" early on, making the network unable to learn.
+
+Gaussian Random (random.gauss): This pulls numbers from a Normal Distribution (a bell curve). 0 is the mean, and 0.1 is the standard deviation. This ensures that almost all the starting weights are tiny numbers clustered very closely around zero (like 0.02, -0.05, 0.08). Starting with tiny, normally distributed weights is a proven technique in Deep Learning to help the network learn faster and avoid math errors in the early stages!
+
+2. Creating the Network's "Brain" (W1 and W2)
+Python
+W1 = rand_mat(10, 5)
+W2 = rand_mat(5, 2)
+These matrices hold the actual "knowledge" of the network. The dimensions correspond perfectly to the architecture we discussed earlier:
+
+W1 (10x5 Matrix): This connects the 10 Input features to the 5 Hidden Layer neurons. It contains exactly 50 individual weights (10×5=50).
+
+W2 (5x2 Matrix): This connects the 5 Hidden Layer neurons to the 2 Output Layer neurons. It contains 10 individual weights.
+
+3. The Hyperparameters (lr and epochs)
+These are the settings that control how the network studies.
+
+Python
+lr = 0.01
+epochs = 100
+lr (Learning Rate): This is the "step size" the network takes when correcting its mistakes.
+
+If lr is too big (like 1.0), the network learns erratically and will constantly "overshoot" the correct answer.
+
+If lr is too small (like 0.00001), the network will take forever to learn anything. 0.01 is a very standard, safe starting speed.
+
+epochs (Training Loops): One epoch means the network has looked at the entire dataset exactly once. epochs = 100 means the network will study the same 100 rows of fake data 100 times over to master the secret rule.
+
+# ---------------- training ----------------
+
+for epoch in range(epochs):
+
+
+
+    # shuffle every epoch (IMPORTANT)
+
+    X, Y = shuffle_data(X, Y)
+
+
+
+    total_loss = 0
+
+    correct = 0
+
+
+
+    for x, y in zip(X, Y):
+
+
+
+        # ---------- forward ----------
+
+        h = [sum(x[i] * W1[i][j] for i in range(10)) for j in range(5)]
+
+        h_relu = relu(h)
+
+
+
+        o = [sum(h_relu[i] * W2[i][j] for i in range(5)) for j in range(2)]
+
+        p = softmax(o)
+
+
+
+        loss = loss_fn(p, y)
+
+        total_loss += loss
+
+
+
+        pred = p.index(max(p))
+
+        if pred == y:
+
+            correct += 1
+
+
+
+        # ---------- backward ----------
+
+        grad_o = p[:]
+
+        grad_o[y] -= 1
+
+
+
+        # update W2
+
+        for i in range(5):
+
+            for j in range(2):
+
+                W2[i][j] -= lr * grad_o[j] * h_relu[i]
+
+
+
+        # backprop hidden
+
+        grad_h = [0] * 5
+
+        for i in range(5):
+
+            for j in range(2):
+
+                grad_h[i] += grad_o[j] * W2[i][j]
+
+
+
+        grad_h = [grad_h[i] * relu_deriv(h)[i] for i in range(5)]
+
+
+
+        # update W1
+
+        for i in range(10):
+
+            for j in range(5):
+
+                W1[i][j] -= lr * grad_h[j] * x[i]
+
+
+
+    # ---------------- output ----------------
+
+    if (epoch + 1) % 10 == 0:
+
+        avg_loss = total_loss / len(X)
+
+        acc = (correct / len(X)) * 100
+
+
+
+        print(
+
+            f"Epoch {epoch+1}/{epochs} "
+
+            f"- Loss: {avg_loss:.4f} "
+
+            f"- Accuracy: {acc:.2f}%"
+
+        )
+
+
+
+print("\nTraining complete.")
+
+This is the absolute heart of your neural network. Everything else you built up to this point—the data, the math functions, the weights—was just setting the stage for this Training Loop.
+
+This is where the network actually "learns" using a process called Stochastic Gradient Descent (SGD) with Backpropagation. Because you aren't using an external math library, the raw calculus and matrix algebra are completely exposed in these Python loops.
+
+Here is the step-by-step breakdown of how this code works.
+
+1. The Epoch Loop & Preparation
+Python
+for epoch in range(epochs):
+    # shuffle every epoch (IMPORTANT)
+    X, Y = shuffle_data(X, Y)
+    
+    total_loss = 0
+    correct = 0
+The Outer Loop: An "epoch" is one complete pass over your entire dataset (all 100 rows). The network will do this 100 times.
+
+Shuffling: You shuffle the data at the start of every epoch. If you don't, the network might just memorize the order of the answers (like a student memorizing an answer key: A, B, B, C...) instead of learning the actual math.
+
+Tracking Trackers: total_loss and correct are reset to zero at the start of each epoch to measure how well the network is currently performing.
+
+2. The Forward Pass (Making a Prediction)
+Python
+    for x, y in zip(X, Y):
+        # ---------- forward ----------
+        h = [sum(x[i] * W1[i][j] for i in range(10)) for j in range(5)]
+        h_relu = relu(h)
+
+        o = [sum(h_relu[i] * W2[i][j] for i in range(5)) for j in range(2)]
+        p = softmax(o)
+The network takes one single row of data (x) and tries to guess the answer.
+
+Input → Hidden (h): The code multiplies your 10 inputs by the W1 weights. The sum() adds them up for each of the 5 hidden neurons.
+
+Activation (h_relu): The raw numbers pass through the ReLU function, killing off any negative numbers.
+
+Hidden → Output (o): The 5 activated hidden values are multiplied by the W2 weights to create 2 raw output numbers.
+
+Probabilities (p): The Softmax function squashes those 2 numbers into percentages (e.g., 80% sure it's class 1, 20% sure it's class 0).
+
+Checking the Work:
+
+Python
+        loss = loss_fn(p, y)
+        total_loss += loss
+
+        pred = p.index(max(p))
+        if pred == y:
+            correct += 1
+It calculates the Cross-Entropy loss. Then, it uses p.index(max(p)) to find which class the network was most confident in. If that matches the true label y, it counts as a correct prediction.
+
+3. The Backward Pass (Learning from Mistakes)
+This is Backpropagation. The network calculates exactly how wrong it was, and then mathematically figures out which specific weights to adjust to fix the error.
+
+Step A: Output Error
+
+Python
+        # ---------- backward ----------
+        grad_o = p[:]
+        grad_o[y] -= 1
+Because of a beautiful quirk of calculus, the derivative of Softmax paired with Cross-Entropy Loss simplifies to exactly: Prediction minus Actual.
+If the network predicted 0.8 for the correct class (which is exactly 1.0), the error gradient is 0.8 - 1 = -0.2. It needs to push that weight up!
+
+Step B: Update W2
+
+Python
+        # update W2
+        for i in range(5):
+            for j in range(2):
+                W2[i][j] -= lr * grad_o[j] * h_relu[i]
+This updates the final weights. It multiplies the learning rate (lr), the output error (grad_o), and the signal that came from the hidden layer (h_relu). It subtracts this amount to "step" down the error curve.
+
+Step C: Hidden Layer Error
+
+Python
+        # backprop hidden
+        grad_h = [0] * 5
+        for i in range(5):
+            for j in range(2):
+                grad_h[i] += grad_o[j] * W2[i][j]
+
+        grad_h = [grad_h[i] * relu_deriv(h)[i] for i in range(5)]
+The network pushes the error backward. To find out how much the hidden layer was to blame, it multiplies the output error by the W2 weights. Then, it multiplies by the derivative of the ReLU function (relu_deriv). If a hidden neuron output a 0 earlier, its derivative is 0, which kills the error signal so that dead neuron doesn't get updated.
+
+Step D: Update W1
+
+Python
+        # update W1
+        for i in range(10):
+            for j in range(5):
+                W1[i][j] -= lr * grad_h[j] * x[i]
+Finally, it updates the first set of weights using the same logic: Learning Rate × Hidden Error × Original Input.
+
+4. The Output (Logging Progress)
+Python
+    # ---------------- output ----------------
+    if (epoch + 1) % 10 == 0:
+        avg_loss = total_loss / len(X)
+        acc = (correct / len(X)) * 100
+
+        print(f"Epoch {epoch+1}/{epochs} - Loss: {avg_loss:.4f} - Accuracy: {acc:.2f}%")
+To avoid spamming your terminal with 100 lines of text, the modulo operator (% 10 == 0) ensures it only prints out the stats every 10 epochs. It calculates the average loss and accuracy for that epoch, giving you a clean readout to watch your AI get smarter in real-time.
+
+import random
+
+import math
+
+
+
+# ---------------- optional reproducibility ----------------
+
+# comment this out if you want different results each run
+
+random.seed(None)
+
+
+
+# ---------------- activation functions ----------------
+
+def relu(x):
+
+    return [max(0, i) for i in x]
+
+
+
+def relu_deriv(x):
+
+    return [1 if i > 0 else 0 for i in x]
+
+
+
+def softmax(x):
+
+    exps = [math.exp(i - max(x)) for i in x]
+
+    s = sum(exps)
+
+    return [i / s for i in exps]
+
+
+
+def loss_fn(p, y):
+
+    return -math.log(p[y] + 1e-9)
+
+
+
+
+
+# ---------------- dataset ----------------
+
+def gen_data(n=100, f=10):
+
+    X, Y = [], []
+
+    for _ in range(n):
+
+        x = [random.uniform(-1, 1) for _ in range(f)]
+
+        y = 1 if sum(x) > 0 else 0
+
+        X.append(x)
+
+        Y.append(y)
+
+    return X, Y
+
+
+
+X, Y = gen_data()
+
+
+
+# ---------------- shuffle helper ----------------
+
+def shuffle_data(X, Y):
+
+    combined = list(zip(X, Y))
+
+    random.shuffle(combined)
+
+    X, Y = zip(*combined)
+
+    return list(X), list(Y)
+
+
+
+# ---------------- weight init (better than uniform) ----------------
+
+def rand_mat(r, c):
+
+    return [[random.gauss(0, 0.1) for _ in range(c)] for _ in range(r)]
+
+
+
+W1 = rand_mat(10, 5)
+
+W2 = rand_mat(5, 2)
+
+
+
+lr = 0.01
+
+epochs = 100
+
+
+
+# ---------------- training ----------------
+
+for epoch in range(epochs):
+
+
+
+    # shuffle every epoch (IMPORTANT)
+
+    X, Y = shuffle_data(X, Y)
+
+
+
+    total_loss = 0
+
+    correct = 0
+
+
+
+    for x, y in zip(X, Y):
+
+
+
+        # ---------- forward ----------
+
+        h = [sum(x[i] * W1[i][j] for i in range(10)) for j in range(5)]
+
+        h_relu = relu(h)
+
+
+
+        o = [sum(h_relu[i] * W2[i][j] for i in range(5)) for j in range(2)]
+
+        p = softmax(o)
+
+
+
+        loss = loss_fn(p, y)
+
+        total_loss += loss
+
+
+
+        pred = p.index(max(p))
+
+        if pred == y:
+
+            correct += 1
+
+
+
+        # ---------- backward ----------
+
+        grad_o = p[:]
+
+        grad_o[y] -= 1
+
+
+
+        # update W2
+
+        for i in range(5):
+
+            for j in range(2):
+
+                W2[i][j] -= lr * grad_o[j] * h_relu[i]
+
+
+
+        # backprop hidden
+
+        grad_h = [0] * 5
+
+        for i in range(5):
+
+            for j in range(2):
+
+                grad_h[i] += grad_o[j] * W2[i][j]
+
+
+
+        grad_h = [grad_h[i] * relu_deriv(h)[i] for i in range(5)]
+
+
+
+        # update W1
+
+        for i in range(10):
+
+            for j in range(5):
+
+                W1[i][j] -= lr * grad_h[j] * x[i]
+
+
+
+    # ---------------- output ----------------
+
+    if (epoch + 1) % 10 == 0:
+
+        avg_loss = total_loss / len(X)
+
+        acc = (correct / len(X)) * 100
+
+
+
+        print(
+
+            f"Epoch {epoch+1}/{epochs} "
+
+            f"- Loss: {avg_loss:.4f} "
+
+            f"- Accuracy: {acc:.2f}%"
+
+        )
+
+
+
+print("\nTraining complete."), now fully explain each line of this, first go through each section and give explanation of each of the line. how that line works? what to learn from this lin of code.
+
+Breaking down a script line-by-line is the absolute best way to deeply understand neural networks from scratch. By doing this, you are looking under the hood at the pure mathematics that libraries like TensorFlow and PyTorch normally hide from you.
+
+Here is your comprehensive, line-by-line explanation of the entire codebase.
+
+1. Imports & Reproducibility
+Python
+import random
+import math
+How it works: Imports Python's built-in libraries. random is used to generate random numbers (for data and weights). math is used for mathematical operations like exponents and logarithms.
+
+What to learn: You don't need massive external libraries like numpy or pandas to build a functioning AI. Pure Python can do it!
+
+Python
+random.seed(None)
+How it works: Sets the starting point for the random number generator. None tells Python to use the current system time, meaning every run will yield completely different random numbers.
+
+What to learn: If you want your AI to have the exact same starting conditions every time you run the script (for debugging), change None to a specific number (like 42).
+
+2. Activation Functions & Loss
+Python
+def relu(x):
+    return [max(0, i) for i in x]
+How it works: Loops through a list x. If a number i is less than 0, max(0, i) replaces it with 0. If it's greater than 0, it stays the same.
+
+What to learn: This is the ReLU (Rectified Linear Unit) function. It introduces "non-linearity," allowing the network to learn complex patterns instead of just straight lines.
+
+Python
+def relu_deriv(x):
+    return [1 if i > 0 else 0 for i in x]
+How it works: Loops through list x. Returns a 1 if the original number was positive, and a 0 if it was negative or zero.
+
+What to learn: This is the derivative (slope) of ReLU. During backpropagation, a 0 stops the network from updating weights for a "dead" neuron, while a 1 allows the learning signal to pass through.
+
+Python
+def softmax(x):
+    exps = [math.exp(i - max(x)) for i in x]
+    s = sum(exps)
+    return [i / s for i in exps]
+How it works: Subtracts the highest number in the list from everything (i - max(x)) to prevent mathematical overflow. Then it calculates the exponential (e 
+x
+ ) for each number, sums them up, and divides each by the sum.
+
+What to learn: Softmax turns raw, messy network outputs into neat percentages (probabilities) that add up exactly to 1.0.
+
+Python
+def loss_fn(p, y):
+    return -math.log(p[y] + 1e-9)
+How it works: Takes the network's probability list p and the correct answer index y. It finds the probability the network assigned to the correct answer, adds a tiny number (1e-9) so it never tries to calculate the log of exactly zero, and calculates the negative logarithm.
+
+What to learn: This is Cross-Entropy Loss. It heavily penalizes the network if it is highly confident in the wrong answer.
+
+3. Dataset Generation
+Python
+def gen_data(n=100, f=10):
+    X, Y = [], []
+How it works: Defines a function to create fake data. n is the number of rows (100), f is the number of features/columns (10). Initializes empty lists for inputs (X) and answers (y).
+
+Python
+    for _ in range(n):
+        x = [random.uniform(-1, 1) for _ in range(f)]
+How it works: Loops 100 times. In each loop, creates a list x containing 10 random decimal numbers between -1.0 and 1.0.
+
+Python
+        y = 1 if sum(x) > 0 else 0
+How it works: This is the secret rule the AI must learn! It adds the 10 numbers together. If the sum is positive, the label y is 1. If negative, y is 0.
+
+What to learn: Supervised machine learning requires input data paired with the correct ground-truth labels.
+
+Python
+        X.append(x)
+        Y.append(y)
+    return X, Y
+
+X, Y = gen_data()
+How it works: Appends the generated row x and label y to the master lists, returns them, and saves them into global X and Y variables.
+
+4. Shuffle Helper
+Python
+def shuffle_data(X, Y):
+    combined = list(zip(X, Y))
+    random.shuffle(combined)
+    X, Y = zip(*combined)
+    return list(X), list(Y)
+How it works: zip pairs up X[0] with Y[0] into a single package so they don't get separated. random.shuffle mixes the packages up. zip(*combined) unzips them back into separate X and Y lists.
+
+What to learn: Always shuffle your data! If the network sees data in the exact same order every time, it might memorize the sequence instead of learning the math.
+
+5. Weight Initialization & Hyperparameters
+Python
+def rand_mat(r, c):
+    return [[random.gauss(0, 0.1) for _ in range(c)] for _ in range(r)]
+How it works: Creates a grid (matrix) with r rows and c columns. Fills it with numbers pulled from a Gaussian (normal) distribution, centered at 0 with a small spread (0.1).
+
+What to learn: Initializing weights as small numbers centered around zero prevents the math from exploding or vanishing in the first few rounds of training.
+
+Python
+W1 = rand_mat(10, 5)
+W2 = rand_mat(5, 2)
+How it works: Creates the network's two layers. W1 (10x5) connects 10 inputs to 5 hidden neurons. W2 (5x2) connects the 5 hidden neurons to 2 output neurons.
+
+Python
+lr = 0.01
+epochs = 100
+How it works: lr (Learning Rate) is the step size for weight updates. epochs is how many times the network will review the entire dataset.
+
+6. The Training Loop & Forward Propagation
+Python
+for epoch in range(epochs):
+    X, Y = shuffle_data(X, Y)
+    total_loss = 0
+    correct = 0
+How it works: Starts the training loop. Shuffles the data. Resets the loss and accuracy trackers for this specific epoch.
+
+Python
+    for x, y in zip(X, Y):
+How it works: Grabs one single row of data (x) and its correct answer (y) to process.
+
+Python
+        h = [sum(x[i] * W1[i][j] for i in range(10)) for j in range(5)]
+How it works: The core of Forward Propagation. For each of the 5 hidden neurons (range(5)), it takes the 10 inputs (x[i]), multiplies them by the 10 connecting weights (W1[i][j]), and adds them all together (sum).
+
+What to learn: This single line is a manual implementation of a "Dot Product" matrix multiplication.
+
+Python
+        h_relu = relu(h)
+How it works: Passes the 5 hidden sums through the ReLU activation function.
+
+Python
+        o = [sum(h_relu[i] * W2[i][j] for i in range(5)) for j in range(2)]
+        p = softmax(o)
+How it works: Does the exact same dot product, but this time connects the 5 activated hidden neurons to the 2 output neurons using the W2 weights. Then, passes the 2 raw outputs through softmax to get probability percentages.
+
+Python
+        loss = loss_fn(p, y)
+        total_loss += loss
+        
+        pred = p.index(max(p))
+        if pred == y:
+            correct += 1
+How it works: Calculates the loss. Then, finds the highest probability in list p. p.index returns the position of that highest number (which is either 0 or 1, representing the class prediction). If it matches y, it counts as a correct guess.
+
+7. Backpropagation (Learning from mistakes)
+Python
+        grad_o = p[:]
+        grad_o[y] -= 1
+How it works: p[:] creates a copy of the probability list. grad_o[y] -= 1 subtracts 1 from the probability of the correct class.
+
+What to learn: This calculates the error gradient at the output layer. Because we used Softmax + Cross-Entropy, the complex calculus neatly cancels out to just Prediction−Actual.
+
+Python
+        for i in range(5):
+            for j in range(2):
+                W2[i][j] -= lr * grad_o[j] * h_relu[i]
+How it works: Updates the W2 weights. Formula: Weight=Weight−(LearningRate×OutputError×HiddenLayerSignal).
+
+Python
+        grad_h = [0] * 5
+        for i in range(5):
+            for j in range(2):
+                grad_h[i] += grad_o[j] * W2[i][j]
+How it works: Passes the error backward to the hidden layer. It multiplies the output errors by the W2 weights to figure out how much each of the 5 hidden neurons contributed to the mistake.
+
+Python
+        grad_h = [grad_h[i] * relu_deriv(h)[i] for i in range(5)]
+How it works: The Chain Rule in action! Multiplies the hidden layer error by the derivative of the ReLU function. If the ReLU function had output a 0 earlier, this multiplies the error by 0, stopping the update for that specific path.
+
+Python
+        for i in range(10):
+            for j in range(5):
+                W1[i][j] -= lr * grad_h[j] * x[i]
+How it works: Updates the W1 weights using the newly calculated hidden layer error. Formula: Weight=Weight−(LearningRate×HiddenError×OriginalInput).
+
+8. Output Tracking
+Python
+    if (epoch + 1) % 10 == 0:
+        avg_loss = total_loss / len(X)
+        acc = (correct / len(X)) * 100
+        
+        print(
+            f"Epoch {epoch+1}/{epochs} "
+            f"- Loss: {avg_loss:.4f} "
+            f"- Accuracy: {acc:.2f}%"
+        )
+How it works: The modulo operator % 10 == 0 ensures this block only runs every 10th epoch. It divides total loss and correct guesses by 100 (the length of dataset X) to get the average loss and accuracy percentage, then prints it to the screen formatted to a specific number of decimal places (.4f and .2f).
+
+solve this properly each question
+
+These are classic Propositional Logic questions, and building these scripts is excellent practice for your AI sessional exam!
+
+Since you need to do this in Python, the trickiest part of Question 1 is writing the "parser" so the program understands logical symbols. I will show you a brilliant, purely Pythonic trick for this: in Python, the boolean Implication (p→q) is mathematically identical to less-than-or-equal-to (p <= q), and Biconditional (p↔q) is identical to equality (p == q).
+
+Here are the complete, properly structured Python solutions for both questions.
+
+Question 1: Propositional Logic Evaluator
+This script covers everything asked in Question 1. It takes an expression as a string, parses the symbols into Python syntax, extracts the variables, generates all possible truth combinations, prints the table, and checks if it is a Tautology, Contradiction, or Contingent.
+
+Python
+import itertools
+import re
+
+def analyze_logic(expr):
+    print(f"Original Expression: {expr}")
+    
+    # 1. PARSING: Convert standard logic operators to Python logic
+    # We replace math symbols with Python's equivalent boolean operators
+    parsed_expr = expr.replace('<->', ' == ') # Biconditional (IFF)
+    parsed_expr = parsed_expr.replace('->', ' <= ')   # Implication (IMPLIES)
+    # The user should use 'and', 'or', 'not' for the rest.
+    
+    # Extract unique variables (e.g., 'p', 'q', 'r') using regex
+    # Looks for standalone lowercase letters
+    vars_list = sorted(list(set(re.findall(r'\b[a-z]\b', parsed_expr))))
+    
+    if not vars_list:
+        print("No variables found in expression.")
+        return
+
+    # 2. Generate all Truth Assignments (True/False combos)
+    combinations = list(itertools.product([True, False], repeat=len(vars_list)))
+    
+    # Setup Truth Table UI
+    header = " | ".join(vars_list) + " | Result"
+    print("-" * len(header))
+    print(header)
+    print("-" * len(header))
+    
+    results = []
+    
+    # 3. Evaluate the expression for every assignment
+    for combo in combinations:
+        # Map variables to current truth values (e.g., {'p': True, 'q': False})
+        env = dict(zip(vars_list, combo))
+        
+        try:
+            # eval() safely runs the string as actual Python code
+            result = eval(parsed_expr, {}, env)
+            results.append(result)
+            
+            # Format row output (Print 'T' / 'F' instead of True/False)
+            row_str = " | ".join(['T' if env[v] else 'F' for v in vars_list])
+            res_str = 'T' if result else 'F'
+            print(f"{row_str} |   {res_str}")
+            
+        except Exception as e:
+            print(f"Error evaluating expression: {e}")
+            return
+
+    print("-" * len(header))
+    
+    # 4. Check status (Tautology / Contradiction / Contingent)
+    if all(results):
+        print("Conclusion: TAUTOLOGY (Always True)")
+    elif not any(results):
+        print("Conclusion: CONTRADICTION (Always False)")
+    else:
+        print("Conclusion: CONTINGENT (Mixed Results)")
+    print("\n")
+
+# --- Run the Input Example from your question paper ---
+# We write it exactly as: (p -> q) and (q -> r) -> (p -> r)
+example_expression = "(p -> q) and (q -> r) -> (p -> r)"
+analyze_logic(example_expression)
+Question 2: Translating Natural Language to Truth Tables
+For Question 2, we need to map the English sentences to variables, write the logical expressions, and generate their specific tables. Here is a clean script that creates a table for all five statements.
+
+Python
+import itertools
+
+def print_truth_table(statement, vars_list, logic_func):
+    """Helper function to cleanly print truth tables for specific logic functions."""
+    print(f"{statement}")
+    header = " | ".join(vars_list) + " | Result"
+    print("-" * len(header))
+    print(header)
+    print("-" * len(header))
+    
+    # Generate True/False combinations based on number of variables
+    combinations = list(itertools.product([True, False], repeat=len(vars_list)))
+    
+    for combo in combinations:
+        # Pass the combination directly into our lambda logic functions
+        result = logic_func(*combo)
+        
+        row_str = " | ".join(['T' if val else 'F' for val in combo])
+        res_str = 'T' if result else 'F'
+        print(f"{row_str} |   {res_str}")
+        
+    print("-" * len(header) + "\n")
+
+
+# -----------------------------------------------------------------
+# 2. Code the following propositions using PL with Python
+# -----------------------------------------------------------------
+
+# a. It is raining outside if and only if it is a cloudy day.
+# Logical Form: p <-> q  (Biconditional)
+print_truth_table(
+    "a. It is raining (p) iff it is cloudy (q) [p <-> q]", 
+    ['p', 'q'], 
+    lambda p, q: p == q
+)
+
+# b. If you get a 100 on the final exam, then you earn an A in the class.
+# Logical Form: p -> q (Implication)
+print_truth_table(
+    "b. If 100 on final (p), then earn an A (q) [p -> q]", 
+    ['p', 'q'], 
+    lambda p, q: p <= q
+)
+
+# c. Take either 2 Advil or 3 Tylenol.
+# Logical Form: p v q (Logical OR)
+# Note: Natural language "either...or" can sometimes mean XOR (Exclusive OR, meaning you shouldn't take both). 
+# However, standard Propositional Logic assumes Inclusive OR unless explicitly stated.
+print_truth_table(
+    "c. Take 2 Advil (p) or 3 Tylenol (q) [p v q]", 
+    ['p', 'q'], 
+    lambda p, q: p or q
+)
+
+# d. She studied hard or she is extremely bright.
+# Logical Form: p v q (Logical OR)
+print_truth_table(
+    "d. Studied hard (p) or extremely bright (q) [p v q]", 
+    ['p', 'q'], 
+    lambda p, q: p or q
+)
+
+# e. I am a rock and I am an island.
+# Logical Form: p ^ q (Logical AND)
+print_truth_table(
+    "e. I am a rock (p) and an island (q) [p ^ q]", 
+    ['p', 'q'], 
+    lambda p, q: p and q
+)
+solve question 4
+
+This is a classic backpropagation problem! Based on the syllabus and chat screenshots you uploaded, it looks like you are preparing for your AI sessional midterm where manual backpropagation calculations are required.
+
+This specific network is identical to a very famous standard textbook example (often referred to as Matt Mazur's backpropagation example). Because the problem doesn't explicitly state the activation function or learning rate, we must assume the standard defaults used for this specific problem: the Sigmoid activation function and a learning rate (η) of 0.5.
+
+Here is the complete, step-by-step manual calculation to estimate the new weights for one full pass (one epoch).
+
+1. Initial Given Values
+Inputs: i 
+1
+​
+ =0.05,i 
+2
+​
+ =0.10
+Target Outputs: t 
+1
+​
+ =0.01,t 
+2
+​
+ =0.99
+Hidden Layer Weights: w 
+1
+​
+ =0.15,w 
+2
+​
+ =0.20,w 
+3
+​
+ =0.25,w 
+4
+​
+ =0.30
+Output Layer Weights: w 
+5
+​
+ =0.40,w 
+6
+​
+ =0.45,w 
+7
+​
+ =0.50,w 
+8
+​
+ =0.55
+Biases: b 
+1
+​
+ =0.35,b 
+2
+​
+ =0.60
+
+Step 1: Forward Propagation
+First, we calculate the inputs and outputs for the hidden layer nodes (h 
+1
+​
+ ,h 
+2
+​
+ ). We use the formula: net 
+h
+​
+ =w 
+1
+​
+ i 
+1
+​
+ +w 
+3
+​
+ i 
+2
+​
+ +b 
+1
+​
+ . Then we apply the Sigmoid function: out= 
+1+e 
+−net
+ 
+1
+​
+ .
+
+For Hidden Node h 
+1
+​
+ :
+
+net 
+h1
+​
+ =(0.15×0.05)+(0.25×0.10)+0.35=0.3825
+out 
+h1
+​
+ = 
+1+e 
+−0.3825
+ 
+1
+​
+ ≈0.59443765
+For Hidden Node h 
+2
+​
+ :
+(Note from diagram: w 
+2
+​
+  goes to h 
+2
+​
+ , w 
+4
+​
+  goes to h 
+2
+​
+ )
+
+net 
+h2
+​
+ =(0.20×0.05)+(0.30×0.10)+0.35=0.39
+out 
+h2
+​
+ = 
+1+e 
+−0.39
+ 
+1
+​
+ ≈0.5962827
+Next, we calculate the outputs for the output layer nodes (o 
+1
+​
+ ,o 
+2
+​
+ ) using the outputs from the hidden layer.
+
+For Output Node o 
+1
+​
+ :
+
+net 
+o1
+​
+ =(0.40×0.59443765)+(0.50×0.5962827)+0.60=1.1359164
+out 
+o1
+​
+ = 
+1+e 
+−1.1359164
+ 
+1
+​
+ ≈0.75136507
+For Output Node o 
+2
+​
+ :
+
+net 
+o2
+​
+ =(0.45×0.59443765)+(0.55×0.5962827)+0.60=1.1954524
+out 
+o2
+​
+ = 
+1+e 
+−1.1954524
+ 
+1
+​
+ ≈0.76771034
+Calculate Total Error:
+Using the Mean Squared Error formula E= 
+2
+1
+​
+ (target−output) 
+2
+ :
+
+E 
+o1
+​
+ = 
+2
+1
+​
+ (0.01−0.75136507) 
+2
+ ≈0.274811
+E 
+o2
+​
+ = 
+2
+1
+​
+ (0.99−0.76771034) 
+2
+ ≈0.024706
+E 
+total
+​
+ =0.274811+0.024706=0.299517
+Step 2: Backward Propagation (Output Layer)
+Now we update the weights connected to the output layer (w 
+5
+​
+ ,w 
+6
+​
+ ,w 
+7
+​
+ ,w 
+8
+​
+ ). We use the Chain Rule to find how much a change in a weight affects the total error:  
+∂w 
+5
+​
+ 
+∂E 
+total
+​
+ 
+​
+ = 
+∂out 
+o1
+​
+ 
+∂E 
+total
+​
+ 
+​
+ × 
+∂net 
+o1
+​
+ 
+∂out 
+o1
+​
+ 
+​
+ × 
+∂w 
+5
+​
+ 
+∂net 
+o1
+​
+ 
+​
+ .
+
+Updating w 
+5
+​
+ :
+
+∂out 
+o1
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =−(t 
+1
+​
+ −out 
+o1
+​
+ )=−(0.01−0.75136507)=0.74136507
+∂net 
+o1
+​
+ 
+∂out 
+o1
+​
+ 
+​
+ =out 
+o1
+​
+ (1−out 
+o1
+​
+ )=0.75136507(1−0.75136507)=0.1868156
+∂w 
+5
+​
+ 
+∂net 
+o1
+​
+ 
+​
+ =out 
+h1
+​
+ =0.59443765
+∂w 
+5
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.74136507×0.1868156×0.59443765≈0.082167
+Now apply the learning rate (η=0.5) to update the weight:
+
+w 
+5
++
+​
+ =w 
+5
+​
+ −(η×0.082167)=0.40−(0.5×0.082167)=0.3589165
+Following the exact same chain rule pattern for the other output weights:
+Updating w 
+6
+​
+ :
+
+∂w 
+6
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =−(0.99−0.76771034)×[0.76771034(1−0.76771034)]×0.59443765≈−0.023560
+w 
+6
++
+​
+ =0.45−(0.5×−0.023560)=0.461780
+Updating w 
+7
+​
+ :
+
+∂w 
+7
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.74136507×0.1868156×0.5962827≈0.082422
+w 
+7
++
+​
+ =0.50−(0.5×0.082422)=0.458789
+Updating w 
+8
+​
+ :
+
+∂w 
+8
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =−0.2222896×0.1783515×0.5962827≈−0.023633
+w 
+8
++
+​
+ =0.55−(0.5×−0.023633)=0.561816
+Step 3: Backward Propagation (Hidden Layer)
+This is the most complex part manually, as the error from h 
+1
+​
+  contributes to the error in both o 
+1
+​
+  and o 
+2
+​
+ .
+
+First, calculate the error gradients for the output nodes (δ 
+o
+​
+ = 
+∂out 
+o
+​
+ 
+∂E 
+total
+​
+ 
+​
+ × 
+∂net 
+o
+​
+ 
+∂out 
+o
+​
+ 
+​
+ ):
+
+δ 
+o1
+​
+ =0.74136507×0.1868156≈0.138498
+δ 
+o2
+​
+ =−0.2222896×0.1783515≈−0.039644
+Updating w 
+1
+​
+  (connected to h 
+1
+​
+ ):
+Find how much h 
+1
+​
+ 's output affects the total error:
+
+∂out 
+h1
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =(δ 
+o1
+​
+ ×w 
+5
+​
+ )+(δ 
+o2
+​
+ ×w 
+6
+​
+ )=(0.138498×0.40)+(−0.039644×0.45)≈0.037559
+Now apply the chain rule back to w 
+1
+​
+ :
+
+∂w 
+1
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.037559×[out 
+h1
+​
+ (1−out 
+h1
+​
+ )]×i 
+1
+​
+ 
+∂w 
+1
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.037559×[0.59443765(1−0.59443765)]×0.05≈0.000452
+Update the weight:
+
+w 
+1
++
+​
+ =0.15−(0.5×0.000452)=0.149774
+Following this exact same pattern for the remaining hidden layer weights:
+Updating w 
+3
+​
+  (connected to h 
+1
+​
+  from i 
+2
+​
+ ):
+
+∂w 
+3
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.037559×0.24115×0.10≈0.000905
+w 
+3
++
+​
+ =0.25−(0.5×0.000905)=0.249547
+Updating w 
+2
+​
+  and w 
+4
+​
+  (connected to h 
+2
+​
+ ):
+First, find how much h 
+2
+​
+ 's output affects the total error using the old w 
+7
+​
+  and w 
+8
+​
+ :
+
+∂out 
+h2
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =(δ 
+o1
+​
+ ×w 
+7
+​
+ )+(δ 
+o2
+​
+ ×w 
+8
+​
+ )=(0.138498×0.50)+(−0.039644×0.55)≈0.047444
+∂w 
+2
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.047444×[out 
+h2
+​
+ (1−out 
+h2
+​
+ )]×i 
+1
+​
+ =0.047444×0.240726×0.05≈0.000571
+w 
+2
++
+​
+ =0.20−(0.5×0.000571)=0.199714
+∂w 
+4
+​
+ 
+∂E 
+total
+​
+ 
+​
+ =0.047444×0.240726×0.10≈0.001142
+w 
+4
++
+​
+ =0.30−(0.5×0.001142)=0.299429
+Final Estimated Weights (After 1 Pass)
+w 
+1
+​
+ : 0.1497
+
+w 
+2
+​
+ : 0.1997
+
+w 
+3
+​
+ : 0.2495
+
+w 
+4
+​
+ : 0.2994
+
+w 
+5
+​
+ : 0.3589
+
+w 
+6
+​
+ : 0.4618
+
+w 
+7
+​
+ : 0.4588
+
+w 
+8
+​
+ : 0.5618
+
+Here are the complete, well-structured answers to all four questions from your sessional exam paper. These are formatted to help you study the core concepts and hit the key points your professor will be looking for to award full marks.
+
+Question 1: Describe components of a neural network and discuss the similarities of a neural network with the human brain. (6 Marks)
+Part A: Components of an Artificial Neural Network (ANN)
+An ANN is built using several foundational components that process data:
+
+Neurons (Nodes): The basic mathematical units that hold a number. They are arranged in layers (Input layer, Hidden layers, and Output layer).
+
+Weights: Connections between neurons. They represent the "strength" or importance of a particular input. When data passes from one neuron to another, it is multiplied by the weight.
+
+Biases: An extra constant value added to the sum of inputs and weights before passing through the activation function. It allows you to shift the activation function curve up or down.
+
+Activation Functions: Mathematical equations (like ReLU, Sigmoid, or Step functions) attached to each neuron. They decide whether a neuron should "fire" (pass its signal forward) based on the calculated input, introducing non-linearity to the network so it can learn complex patterns.
+
+Part B: Similarities with the Human Brain
+Artificial Neural Networks were originally inspired by biological brains. The key analogies include:
+
+Nodes vs. Biological Neurons: An artificial node acts like a brain cell (neuron), receiving signals, processing them, and transmitting a result.
+
+Weights vs. Synapses: In the brain, synapses connect neurons and can grow stronger or weaker based on usage. In an ANN, weights represent this synaptic strength.
+
+Activation vs. Action Potential: A biological neuron fires an electrical impulse (action potential) only when the incoming signals cross a certain threshold. An artificial activation function mimics this by mathematically restricting when and how strongly a node passes data forward.
+
+Distributed Knowledge: Both systems do not store "memory" in one specific central location (like a standard computer hard drive). Instead, knowledge is distributed across the entire network as the collective strengths of all connections.
+
+Question 2: What does "learning" mean referring to neural nets? (4 Marks)
+In the context of artificial neural networks, "learning" is the mathematical process of automatically adjusting the network's internal parameters (weights and biases) to minimize errors. A network doesn't start out knowing how to solve a problem; its initial weights are usually random. "Learning" involves:
+
+Experience: Feeding the network data (training examples).
+
+Evaluation: Calculating how wrong the network's prediction was compared to the actual target using a Loss Function.
+
+Adaptation: Using algorithms like Gradient Descent and Backpropagation to push the error backward through the network, tweaking the weights and biases slightly so that the next time it sees similar data, it makes a more accurate prediction.
+
+Learning is considered complete when the network's loss stops decreasing, meaning it has generalized the underlying patterns of the data.
+
+Question 3: Differentiate between supervised and unsupervised learning. (2 Marks)
+Here is a clear comparison for your exam:
+
+Feature	Supervised Learning	Unsupervised Learning
+Data Type	Labeled Data: The training data includes the inputs and the correct answers (targets).	Unlabeled Data: The training data contains only inputs with no explicit correct answers.
+Goal	To map inputs to known outputs (e.g., predicting if an image is a "cat" or "dog").	To discover hidden patterns, structures, or groupings within the data.
+Feedback Mechanism	The algorithm is corrected when its prediction doesn't match the provided label.	There is no external teacher or error correction; the algorithm must find commonalities on its own.
+Common Tasks	Classification, Regression.	Clustering, Dimensionality Reduction.
+Question 4: Explain forward propagation and self-organization. (3 Marks)
+Forward Propagation:
+This is the process of pushing input data through the neural network from the input layer, through the hidden layers, and out to the output layer to generate a prediction. During this phase, data flows strictly in one direction (forward).
+At each neuron, the inputs are multiplied by their respective weights, summed together with the bias, and passed through an activation function to become the input for the next layer. No learning or weight updating happens during forward propagation; it is purely the network making a "guess."
+
+Self-Organization:
+While forward propagation is standard for supervised learning, self-organization refers to a specific type of unsupervised learning. In a self-organizing neural network (like a Kohonen Self-Organizing Map), neurons "compete" with each other to respond to specific inputs.
+Without any target labels to guide them, the network's nodes mathematically arrange themselves based on the input data's topology. Similar inputs will trigger neurons that are physically close to each other in the network. It "organizes itself" to represent the hidden patterns in the data without human intervention or backpropagated error signals.
+
+import torch
+
+import torch.nn as nn
+
+import torch.nn.functional as F
+
+from torch.optim import Adam
+
+from torch.utils.data import DataLoader, TensorDataset
+
+from sklearn.datasets import make_classification
+
+from tqdm import tqdm
+
+
+
+# Create synthetic dataset using sklearn's make_classification
+
+data, labels = make_classification(n_samples=100, n_features=10, n_classes=2)
+
+
+
+#pytorch only supports tensor format, so we need to convert our data
+
+
+
+data = torch.tensor(data, dtype=torch.float32)
+
+labels = torch.tensor(labels, dtype=torch.long)
+
+
+
+# dataloader is used to load the data in batches and shuffle it during training
+
+dataset = TensorDataset(data, labels)
+
+dataloader = DataLoader(dataset, batch_size=16, shuffle=True)
+
+
+
+# create simple neural network
+
+class SimpleNN(nn.Module):
+
+    def __init__(self, input_size, hidden_size, output_size):
+
+        super(SimpleNN, self).__init__()
+
+        self.fc1 = nn.Linear(input_size, hidden_size) # hidden layer
+
+        self.fc2 = nn.Linear(hidden_size, output_size) # output layer
+
+        self.relu = nn.ReLU()
+
+
+
+    def forward(self, x):
+
+        x = self.relu(self.fc1(x))
+
+        x = self.fc2(x)
+
+        return x
+
+    
+
+epochs = 100
+
+input_size = 10
+
+
+
+hidden_size = 5
+
+output_size = 2
+
+
+
+model = SimpleNN(input_size, hidden_size, output_size)
+
+model.train()
+
+optimizer = Adam(model.parameters(), lr=0.001)
+
+criterion = nn.CrossEntropyLoss()
+
+
+
+for epoch in tqdm(range(epochs)):
+
+    for inputs, labels in dataloader:
+
+        outputs = model(inputs)
+
+        loss = criterion(outputs, labels)
+
+
+
+        optimizer.zero_grad()
+
+        loss.backward()
+
+        optimizer.step()    
+
+
+
+    if (epoch+1) % 10 == 0:
+
+        print(f'Epoch [{epoch+1}/{epochs}], Loss: {loss.item():.4f}'), this maybe a automatic answer for task 4, can you give similar manual code without using any library like torch,numpy of anything. just manush python code.
+
+You are exactly right—while PyTorch is great for building real-world applications, if you want an "automatic" script to double-check your manual calculations for Question 4, you need a completely pure Python script (what we might call "manush" or manual code!).
+
+The PyTorch code you provided generates random data and uses ReLU/Cross-Entropy. To solve Question 4 programmatically, we need to strictly use the exact inputs, initial weights, biases, and the Sigmoid activation function assumed in that specific textbook problem.
+
+Here is the pure Python code, using only the built-in math library, that perfectly replicates the manual backpropagation calculations we did earlier. You can run this to instantly get the final weights!
+
+Pure Python Backpropagation for Question 4
+Python
+import math
+
+# --- 1. Define the Activation Function ---
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+
+def sigmoid_derivative(out):
+    # The derivative of sigmoid is simply: output * (1 - output)
+    return out * (1 - out)
+
+# --- 2. Initialize the Given Values from the Diagram ---
+# Inputs
+i1 = 0.05
+i2 = 0.10
+
+# Target Outputs
+t1 = 0.01
+t2 = 0.99
+
+# Initial Hidden Layer Weights
+w1 = 0.15
+w2 = 0.20
+w3 = 0.25
+w4 = 0.30
+
+# Initial Output Layer Weights
+w5 = 0.40
+w6 = 0.45
+w7 = 0.50
+w8 = 0.55
+
+# Biases
+b1 = 0.35
+b2 = 0.60
+
+# Learning Rate (Standard default for this problem)
+lr = 0.5
+
+print("--- STARTING ONE PASS OF TRAINING ---\n")
+
+# --- 3. FORWARD PROPAGATION ---
+# Hidden Layer
+net_h1 = (w1 * i1) + (w3 * i2) + b1
+out_h1 = sigmoid(net_h1)
+
+net_h2 = (w2 * i1) + (w4 * i2) + b1
+out_h2 = sigmoid(net_h2)
+
+# Output Layer
+net_o1 = (w5 * out_h1) + (w7 * out_h2) + b2
+out_o1 = sigmoid(net_o1)
+
+net_o2 = (w6 * out_h1) + (w8 * out_h2) + b2
+out_o2 = sigmoid(net_o2)
+
+# Calculate Total Error (Mean Squared Error)
+error_o1 = 0.5 * (t1 - out_o1) ** 2
+error_o2 = 0.5 * (t2 - out_o2) ** 2
+total_error = error_o1 + error_o2
+
+print(f"Total Error after Forward Pass: {total_error:.6f}\n")
+
+# --- 4. BACKWARD PROPAGATION (Output Layer) ---
+# Calculate Output Node Deltas (Error gradient * Activation derivative)
+delta_o1 = -(t1 - out_o1) * sigmoid_derivative(out_o1)
+delta_o2 = -(t2 - out_o2) * sigmoid_derivative(out_o2)
+
+# Store new output weights in temporary variables
+# Formula: W_new = W_old - (LearningRate * Delta * SourceOutput)
+new_w5 = w5 - (lr * delta_o1 * out_h1)
+new_w6 = w6 - (lr * delta_o2 * out_h1)
+new_w7 = w7 - (lr * delta_o1 * out_h2)
+new_w8 = w8 - (lr * delta_o2 * out_h2)
+
+# --- 5. BACKWARD PROPAGATION (Hidden Layer) ---
+# Calculate Hidden Node Deltas
+# Formula: (Sum of Output Deltas * Connected Weights) * Activation derivative
+error_h1 = (delta_o1 * w5) + (delta_o2 * w6)
+delta_h1 = error_h1 * sigmoid_derivative(out_h1)
+
+error_h2 = (delta_o1 * w7) + (delta_o2 * w8)
+delta_h2 = error_h2 * sigmoid_derivative(out_h2)
+
+# Store new hidden weights in temporary variables
+new_w1 = w1 - (lr * delta_h1 * i1)
+new_w2 = w2 - (lr * delta_h2 * i1)
+new_w3 = w3 - (lr * delta_h1 * i2)
+new_w4 = w4 - (lr * delta_h2 * i2)
+
+# --- 6. PRINT RESULTS ---
+print("--- NEW ESTIMATED WEIGHTS ---")
+print(f"w1: {new_w1:.6f}")
+print(f"w2: {new_w2:.6f}")
+print(f"w3: {new_w3:.6f}")
+print(f"w4: {new_w4:.6f}")
+print(f"w5: {new_w5:.6f}")
+print(f"w6: {new_w6:.6f}")
+print(f"w7: {new_w7:.6f}")
+print(f"w8: {new_w8:.6f}")
+Why this is better for your exam prep:
+No Hidden Math: Unlike PyTorch's loss.backward(), which hides the calculus, this script forces you to explicitly write out the Chain Rule (delta_o1 = -(t1 - out_o1) * sigmoid_derivative(out_o1)).
+
+Instant Verification: If your professor changes the inputs (e.g., i 
+1
+​
+ =0.15) or the learning rate on the actual exam paper, you can just plug the new numbers into this script to instantly find out what the correct final answer should be while you study!
+
+is it engouh for this task 4. Basic Neural Network with back propagation algorithm? if so, then explain each section of the code and each section go to each line and explain the functionality of each line of the code, how it works? what does that section do? what does this line of this section do? everything
+
+Yes, this code is absolutely enough for Task 4. In fact, it is the exact mathematical translation of what you are expected to do by hand on your exam. Because it does not rely on hidden black-box functions (like PyTorch's .backward()), it explicitly shows the forward pass, error calculation, and backpropagation chain rule step-by-step.
+
+Here is the comprehensive, line-by-line breakdown of how this pure Python code works.
+
+Section 1: The Activation Function
+What this section does: It defines the mathematical rules that determine how active (or "fired up") a neuron gets based on its inputs. It also defines the derivative (the rate of change) of that function, which is required later to calculate the error gradients during backpropagation.
+
+Line-by-Line Explanation:
+
+def sigmoid(x):
+
+Defines a Python function named sigmoid that takes a single number x (which will be the total sum of weights and inputs for a node).
+
+return 1 / (1 + math.exp(-x))
+
+This is the standard formula for the Sigmoid activation function:  
+1+e 
+−x
+ 
+1
+​
+ . math.exp(-x) calculates e 
+−x
+ . It squishes any input number into a range strictly between 0 and 1.
+
+def sigmoid_derivative(out):
+
+Defines a function to calculate the derivative of the Sigmoid curve. Notice it takes out (the already calculated output of the sigmoid function) rather than the raw input.
+
+return out * (1 - out)
+
+A unique mathematical property of the Sigmoid function is that its derivative can be calculated using its own output. If S(x) is Sigmoid, the derivative is S(x)(1−S(x)). This line calculates and returns that value.
+
+Section 2: Initialize the Given Values
+What this section does:
+It simply sets up all the starting variables exactly as they are printed on your exam paper diagram.
+
+Line-by-Line Explanation:
+
+i1 = 0.05 and i2 = 0.10: Sets the fixed numerical values for the two input nodes.
+
+t1 = 0.01 and t2 = 0.99: Sets the "target" or "true" outputs. This is what we want the network to predict.
+
+w1 = 0.15 through w4 = 0.30: Initializes the starting weights connecting the input layer to the hidden layer.
+
+w5 = 0.40 through w8 = 0.55: Initializes the starting weights connecting the hidden layer to the output layer.
+
+b1 = 0.35 and b2 = 0.60: Sets the bias values. b1 is added to the hidden nodes, and b2 is added to the output nodes.
+
+lr = 0.5: Sets the Learning Rate (η). This acts as a multiplier to control how aggressively the weights are updated. A value of 0.5 is standard for this specific textbook example.
+
+Section 3: Forward Propagation
+What this section does:
+It pushes the input data forward through the network. It multiplies inputs by weights, adds the bias, applies the activation function, and finally calculates how wrong the network's final guesses were.
+
+Line-by-Line Explanation:
+
+net_h1 = (w1 * i1) + (w3 * i2) + b1
+
+Calculates the raw, unactivated input to hidden node 1 (h 
+1
+​
+ ). It multiplies each input by its respective connection weight to h 
+1
+​
+  and adds the hidden layer bias b1.
+
+out_h1 = sigmoid(net_h1)
+
+Passes the raw sum (net_h1) through the Sigmoid function to get the actual output of node h 
+1
+​
+  (a number between 0 and 1).
+
+net_h2 = (w2 * i1) + (w4 * i2) + b1 and out_h2 = sigmoid(net_h2)
+
+Does the exact same calculation as above, but for hidden node 2 (h 
+2
+​
+ ), using its specific weights w2 and w4.
+
+net_o1 = (w5 * out_h1) + (w7 * out_h2) + b2 and out_o1 = sigmoid(net_o1)
+
+Moves to the output layer. Calculates the raw sum for output node 1 (o 
+1
+​
+ ) using the outputs of the hidden layer as its new inputs. Adds output bias b2, then applies Sigmoid.
+
+net_o2 = (w6 * out_h1) + (w8 * out_h2) + b2 and out_o2 = sigmoid(net_o2)
+
+Does the same for output node 2 (o 
+2
+​
+ ).
+
+error_o1 = 0.5 * (t1 - out_o1)  2
+
+Calculates the Mean Squared Error for the first output node. The formula is  
+2
+1
+​
+ (target−output) 
+2
+ . The  2 is Python for "squared".
+
+error_o2 = 0.5 * (t2 - out_o2)  2
+
+Calculates the error for the second output node.
+
+total_error = error_o1 + error_o2
+
+Adds the individual errors together to get the total loss for the entire network.
+
+Section 4: Backward Propagation (Output Layer)
+What this section does:
+This begins the "learning" phase. It calculates how much the output weights (w5 through w8) contributed to the total error, and computes new, updated values for them to make the network more accurate next time.
+
+Line-by-Line Explanation:
+
+delta_o1 = -(t1 - out_o1) * sigmoid_derivative(out_o1)
+
+Calculates the "Delta" (error gradient) for output node 1. This uses the calculus Chain Rule. -(t1 - out_o1) is the derivative of the error function. sigmoid_derivative(out_o1) is the derivative of the activation function. Multiplying them tells us how the error changes with respect to the node's input.
+
+delta_o2 = -(t2 - out_o2) * sigmoid_derivative(out_o2)
+
+Calculates the Delta for output node 2 using the same logic.
+
+new_w5 = w5 - (lr * delta_o1 * out_h1)
+
+Calculates the brand new weight for w5. The formula is: New Weight = Old Weight - (Learning Rate × Delta of destination node × Output of source node).
+
+new_w6 = w6 - (lr * delta_o2 * out_h1)
+
+Updates w6. It connects h 
+1
+​
+  to o 
+2
+​
+ , so it uses delta_o2 and out_h1.
+
+new_w7 = w7 - (lr * delta_o1 * out_h2)
+
+Updates w7. It connects h 
+2
+​
+  to o 
+1
+​
+ , so it uses delta_o1 and out_h2.
+
+new_w8 = w8 - (lr * delta_o2 * out_h2)
+
+Updates w8. It connects h 
+2
+​
+  to o 
+2
+​
+ , so it uses delta_o2 and out_h2.
+
+Section 5: Backward Propagation (Hidden Layer)
+What this section does:
+It pushes the error even further back to the hidden layer weights (w1 through w4). Because hidden nodes don't have direct "target" answers, their error is calculated based on how much they contributed to the errors of the output nodes they connect to.
+
+Line-by-Line Explanation:
+
+error_h1 = (delta_o1 * w5) + (delta_o2 * w6)
+
+Calculates the total error responsibility for hidden node 1. Node h 
+1
+​
+  connects to both o 
+1
+​
+  (via w5) and o 
+2
+​
+  (via w6). We multiply the output deltas by the original weights to see how much "blame" h 
+1
+​
+  deserves.
+
+delta_h1 = error_h1 * sigmoid_derivative(out_h1)
+
+Converts the raw error responsibility of h 
+1
+​
+  into a Delta gradient by multiplying it by the derivative of h 
+1
+​
+ 's activation function.
+
+error_h2 = (delta_o1 * w7) + (delta_o2 * w8)
+
+Calculates the total error responsibility for hidden node 2, which connects to o 
+1
+​
+  (via w7) and o 
+2
+​
+  (via w8).
+
+delta_h2 = error_h2 * sigmoid_derivative(out_h2)
+
+Calculates the Delta gradient for hidden node 2.
+
+new_w1 = w1 - (lr * delta_h1 * i1)
+
+Updates w1. Connects input i1 to h 
+1
+​
+ , so it uses delta_h1 and i1.
+
+new_w2 = w2 - (lr * delta_h2 * i1)
+
+Updates w2. Connects input i1 to h 
+2
+​
+ , so it uses delta_h2 and i1.
+
+new_w3 = w3 - (lr * delta_h1 * i2)
+
+Updates w3. Connects input i2 to h 
+1
+​
+ , so it uses delta_h1 and i2.
+
+new_w4 = w4 - (lr * delta_h2 * i2)
+
+Updates w4. Connects input i2 to h 
+2
+​
+ , so it uses delta_h2 and i2.
+
+Section 6: Print Results
+What this section does:
+Outputs the final calculated variables to the console.
+
+Line-by-Line Explanation:
+
+print(f"w1: {new_w1:.6f}") (and all subsequent print lines):
+
+Prints the newly calculated weight. The syntax :.6f forces Python to round the number to exactly 6 decimal places, making it clean and easy to read so you can compare it directly against your manual exam calculations.
+
