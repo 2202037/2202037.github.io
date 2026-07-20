@@ -1,0 +1,60 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+  return x**2 - 3
+
+def bisection(func, a, b, tol=1e-6, max_iter=100):
+  """
+  Implemetation of the bisection method to find the root of a function.
+  
+  Parameters:
+    func (function): The function of which the root is to be found.
+    a (float): Initial guess for the lower bound of the root.
+    b (float): Initial guess for the upper bound of the root.
+    tol (float): Tolerance for the root. Default is 1e-6.
+    max_iter (int): Maximum number of iterations. Default is 100.
+
+  Returns:
+    float: Approximation of the root.
+  """
+
+  if func(a) * func(b) >= 0:
+    print("Bisection method fails.")
+    return None
+  
+  iterations = []
+  for _ in range(max_iter):
+    c = (a + b) / 2
+    iterations.append((a, b, c, func(c)))
+
+    if abs(func(c)) < tol:
+      break
+    elif func(c) * func(a) < 0:
+      b = c
+    else:
+      a = c
+  return c, iterations
+
+# Example usage
+root, iterations = bisection(f, 1, 2)
+
+# Tabular representation
+print("Bisection Method Iterations: ")
+print("Iteration\t  a\t\t  b\t\t  c\t\t  f(c)")
+for i, (a, b, c, f_c) in enumerate(iterations):
+  print(f"{i+1}\t\t  {a:.6f}\t  {b:.6f}\t  {c:.6f}\t  {f_c:.6f}")
+
+# Graphical representation
+x = np.linspace(0, 4, 100)
+plt.plot(x, f(x), label='f(x)')
+plt.axhline(0, color='black', linewidth=0.5)
+plt.scatter(root, f(root), color='red', label='Root')
+for a, b, _, _ in iterations:
+  plt.plot([a, b], [f(a), f(b)], color='blue', linestyle='--')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Bisection Method')
+plt.legend()
+plt.grid(True)
+plt.show()
