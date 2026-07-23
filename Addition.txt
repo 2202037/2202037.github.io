@@ -1,0 +1,595 @@
+Addition
+.model small
+.stack 100h
+.code
+
+main proc
+    
+    mov ah,1
+    int 21h
+    mov bl,al
+    sub bl,48
+    
+    
+    mov ah,1
+    int 21h
+    sub al,48
+    
+    add bl,al
+    add bl,48
+    
+    mov ah,2
+    mov dl,10
+    int 21h
+    mov dl,13
+    int 21h
+    
+    mov dl,bl
+    mov ah,2
+    int 21h
+    
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+
+
+
+subtraction
+.model small
+.stack 100h
+.code
+
+main proc
+    mov ah,1
+    int 21h
+    mov bl,al
+    
+    mov ah,1
+    int 21h
+    mov cl,al
+    
+    sub bl,cl
+    add bl,48
+    
+    mov ah,2
+    mov dl,' '
+    int 21h
+    
+    mov dl,bl
+    mov ah,2
+    int 21h
+    
+    mov ah,4ch
+    int 21h
+    
+    main endp
+end main
+
+
+
+multiplication 
+.model small
+.stack 100h
+.code
+
+main proc
+    
+    mov ah,1
+    int 21h
+    mov bl,al 
+    sub bl,48
+    
+    mov ah,1
+    int 21h 
+    sub al,48
+    
+    
+    mul bl
+    
+    mov dl,al
+    add dl,48
+    
+    mov ah,2
+    int 21h
+    
+    mov ah,4ch
+    int 21h
+    
+    main endp
+end main
+
+
+
+
+
+
+division
+.model small
+.stack 100h
+.code
+
+main proc
+    mov ax,8
+    mov bl,2
+    
+    div bl
+    
+    mov dl,al
+    add dl,48
+    
+    mov ah,2
+    int 21h
+    
+    mov ah,4ch
+    int 21h
+    
+    main endp
+end main
+
+
+
+
+
+
+
+
+
+
+compare equal or not
+.model small
+.stack 100h
+.code
+
+main proc
+    
+    mov ah,1
+    int 21h
+    mov bl,al
+    
+    mov ah,1
+    int 21h
+    
+    cmp al,bl
+    
+    je are_equal
+    
+    
+    are_not_equal:
+    
+    mov dl,'N'
+    jmp print
+    
+    are_equal:
+    mov dl,'Y'
+    
+    
+    print:
+    mov ah,2
+    int 21h
+    
+    mov ah,4ch
+    int 21h
+    
+    main endp
+end main
+
+
+loop
+
+.model small
+.stack 100h
+.code
+
+main proc
+    
+    mov cx,5
+    mov dl,'1'
+    
+    
+    print_loop:   
+    
+    mov ah,2
+    int 21h
+    
+    mov bl,dl
+    mov dl,' '
+    int 21h
+    mov dl,bl
+    
+    inc dl
+    
+    loop print_loop
+    
+    mov ah, 4ch
+    int 21h
+    
+    main endp
+end main
+    
+
+
+
+
+
+
+mid solve
+.model small
+.stack 100h
+
+.data
+    menu db 10, 13, "1.Add 2.Sub 3.Mul 4.Div 5.Exit: $"
+    p1   db 10, 13, "Enter First Number: $"
+    p2   db 10, 13, "Enter Second Number: $"
+    pRes db 10, 13, "Result: $"
+    pErr db 10, 13, "Error: Division by zero$"
+    pC   db 10, 13, "Continue? (1/0): $"
+
+    n1 db ?
+    n2 db ?
+
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+
+start:
+    ; 1. Print Menu
+    mov ah, 9
+    lea dx, menu
+    int 21h
+
+    ; Get Menu Choice
+    mov ah, 1
+    int 21h
+    cmp al, '5'         ; Exit directly if '5'
+    je exit
+    mov bl, al          ; Save operation choice in BL
+
+    ; 2. Input First Number
+    mov ah, 9
+    lea dx, p1
+    int 21h
+    mov ah, 1
+    int 21h
+    sub al, '0'         ; ASCII to Integer
+    mov n1, al
+
+    ; 3. Input Second Number
+    mov ah, 9
+    lea dx, p2
+    int 21h
+    mov ah, 1
+    int 21h
+    sub al, '0'         ; ASCII to Integer
+    mov n2, al
+
+    ; 4. Route based on choice in BL
+    cmp bl, '1'
+    je do_add
+    cmp bl, '2'
+    je do_sub
+    cmp bl, '3'
+    je do_mul
+    cmp bl, '4'
+    je do_div
+    jmp ask_cont        ; Invalid option -> ask to continue
+
+do_add:
+    mov al, n1
+    add al, n2
+    jmp print_res
+
+do_sub:
+    mov al, n1
+    sub al, n2
+    jmp print_res
+
+do_mul:
+    mov al, n1
+    mul n2              ; AL = n1 * n2
+    jmp print_res
+
+do_div:
+    cmp n2, 0           ; Check division by zero
+    je div_zero
+    mov al, n1
+    mov ah, 0           ; Clear AH before division
+    div n2              ; Quotient goes into AL
+    jmp print_res
+
+div_zero:
+    mov ah, 9
+    lea dx, pErr
+    int 21h
+    jmp ask_cont
+
+print_res:
+    ; --- THE SHORTCUT TRICK ---
+    aam                 ; Automatically splits AL (0-99) into AH (Tens) & AL (Ones)
+    add ax, 3030h       ; Converts BOTH AH and AL to ASCII at once!
+    mov bx, ax          ; BH = Tens, BL = Ones
+
+    ; Print Result Label
+    mov ah, 9
+    lea dx, pRes
+    int 21h
+
+    ; Print Tens Digit
+    mov dl, bh
+    mov ah, 2
+    int 21h
+
+    ; Print Ones Digit
+    mov dl, bl
+    mov ah, 2
+    int 21h
+
+ask_cont:
+    ; Loop Requirement
+    mov ah, 9
+    lea dx, pC
+    int 21h
+    mov ah, 1
+    int 21h
+    
+    cmp al, '1'
+    je start            ; Repeat if '1'
+
+exit:
+    mov ah, 4ch
+    int 21h
+
+main endp
+end main
+
+
+
+
+another implementation:
+.model small
+.stack 100h
+
+.data
+    ; Menu and prompt strings
+    msg_menu    db 10, 13, '--- Menu ---'
+                db 10, 13, '1. Addition'
+                db 10, 13, '2. Subtraction'
+                db 10, 13, '3. Multiplication'
+                db 10, 13, '4. Division'
+                db 10, 13, '5. Exit', 10, 13, '$'
+                
+    p_num1      db 10, 13, 'Enter First Number: $'
+    p_num2      db 10, 13, 'Enter Second Number: $'
+    p_op        db 10, 13, 'Choose Operation: $'
+    p_res       db 10, 13, 'Result: $'
+    p_err       db 10, 13, 'Error: Division by zero$'
+    p_cont      db 10, 13, 'Continue? (1/0): $'
+
+    ; Variables to store user inputs
+    num1        db ?
+    num2        db ?
+
+.code
+main proc
+    ; Initialize data segment
+    mov ax, @data
+    mov ds, ax
+
+start_loop:
+    ; 1. Display the menu
+    mov ah, 9
+    lea dx, msg_menu
+    int 21h
+
+    ; 2. Ask for the first number
+    mov ah, 9
+    lea dx, p_num1
+    int 21h
+    mov ah, 1           ; read character
+    int 21h
+    sub al, 30h         ; convert ASCII to integer ('0' is 30h)
+    mov num1, al
+
+    ; Ask for the second number
+    mov ah, 9
+    lea dx, p_num2
+    int 21h
+    mov ah, 1           ; read character
+    int 21h
+    sub al, 30h         ; convert ASCII to integer
+    mov num2, al
+
+    ; Ask for the operation
+    mov ah, 9
+    lea dx, p_op
+    int 21h
+    mov ah, 1           ; read character
+    int 21h             ; AL now holds '1', '2', '3', '4', or '5'
+
+    ; 3. Route to the selected operation
+    cmp al, '1'
+    je do_add
+    cmp al, '2'
+    je do_sub
+    cmp al, '3'
+    je do_mul
+    cmp al, '4'
+    je do_div
+    cmp al, '5'
+    je exit_prog
+    jmp ask_cont        ; If invalid, just ask to continue
+
+; --- Addition (A + B) ---
+do_add:
+    mov ah, 9
+    lea dx, p_res
+    int 21h
+    mov al, num1
+    add al, num2
+    call print_num      ; Call procedure to handle up to 2-digit numbers
+    jmp ask_cont
+
+; --- Subtraction (A - B) ---
+do_sub:
+    mov ah, 9
+    lea dx, p_res
+    int 21h
+    mov al, num1
+    sub al, num2
+    js is_negative      ; Jump if Sign Flag is set (meaning result is negative)
+    call print_num
+    jmp ask_cont
+
+is_negative:
+    push ax             ; Save the negative result
+    mov ah, 2
+    mov dl, '-'         ; Print a negative sign first
+    int 21h
+    pop ax
+    neg al              ; Convert negative to positive (2's complement)
+    call print_num
+    jmp ask_cont
+
+; --- Multiplication (A * B) ---
+do_mul:
+    mov ah, 9
+    lea dx, p_res
+    int 21h
+    mov al, num1
+    mov bl, num2
+    mul bl              ; AX = AL * BL
+    call print_num
+    jmp ask_cont
+
+; --- Division (A / B) ---
+do_div:
+    cmp num2, 0         ; Check if divisor is zero
+    je div_zero
+    
+    mov ah, 9
+    lea dx, p_res
+    int 21h
+    
+    mov al, num1
+    mov ah, 0           ; Clear AH for division
+    mov bl, num2
+    div bl              ; AL = Quotient, AH = Remainder
+    call print_num      ; Print the quotient
+    jmp ask_cont
+
+div_zero:
+    mov ah, 9
+    lea dx, p_err       ; Print "Error: Division by zero"
+    int 21h
+    jmp ask_cont
+
+; --- Loop Requirement (Do you want to continue?) ---
+ask_cont:
+    mov ah, 9
+    lea dx, p_cont
+    int 21h
+    mov ah, 1
+    int 21h             ; Read character
+    
+    cmp al, '1'
+    je start_loop       ; If '1', go back to start
+    cmp al, '0'
+    je exit_prog        ; If '0', terminate
+    jmp ask_cont        ; If invalid input, prompt again
+
+; --- Exit Sequence ---
+exit_prog:
+    mov ah, 4ch         ; DOS terminate program function
+    int 21h
+
+main endp
+
+
+; ------------------------------------------------------------------
+; Procedure: print_num
+; Description: Prints the number stored in AL.
+; Capable of printing 1 or 2 digits (strips leading zero if < 10).
+; ------------------------------------------------------------------
+print_num proc
+    mov ah, 0
+    mov bl, 10
+    div bl              ; Divide AL by 10. AL=Quotient(Tens), AH=Remainder(Ones)
+    
+    add ax, 3030h       ; Convert both digits to ASCII ('0' = 30h)
+    mov bx, ax          ; Store safely in BX (BL = Tens, BH = Ones)
+
+    cmp bl, '0'         ; Check if the tens digit is '0'
+    je print_ones       ; If it is, skip printing it (e.g. print "5" instead of "05")
+
+    mov dl, bl          ; Print tens digit
+    mov ah, 2
+    int 21h
+
+print_ones:
+    mov dl, bh          ; Print ones digit
+    mov ah, 2
+    int 21h
+    
+    ret
+print_num endp
+
+end main
+
+
+
+
+
+
+
+
+
+
+
+nested
+.model small
+.stack 100h
+.code
+
+main proc
+    mov cx,3
+    
+    outer:
+        push cx
+        mov cx,3
+        
+    
+    inner:
+        mov dl,'$'
+        mov ah,2
+        int 21h
+        loop inner
+        
+        
+        mov dl,10
+        mov ah,2
+        int 21h
+        mov dl,13
+        int 21h
+        
+        
+        pop cx
+        loop outer
+        
+        
+        mov ah,4ch
+        int 21h
+        
+        main endp
+end main
+        
+
+
+
+
+
+
+
+
+
+

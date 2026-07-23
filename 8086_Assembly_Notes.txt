@@ -1,0 +1,236 @@
+====================================================================
+ASSEMBLY CODE GENERATION FOR LAB TOPICS - NOTES & CODE
+====================================================================
+(Note: source PDF only contained pages 19, 20, 22, and 27 of a
+27-page document, so pages 21 and 23-26 are not included below.)
+
+
+====================================================================
+1. DECLARING VARIABLES IN .data
+====================================================================
+
+Using variables in the .data segment makes assembly programs much
+easier to read and maintain. Instead of tracking which number is
+sitting in BL versus CL, you can store them in memory with
+meaningful names.
+
+Variables are placed inside the .data block before .code. You
+define them by specifying their Name, Size, and Initial Value.
+
+Common Data Sizes:
+- DB (Define Byte): Allocates 1 byte (8 bits). Use this for
+  individual ASCII characters, small numbers (0 to 255), or strings.
+- DW (Define Word): Allocates 2 bytes (16 bits). Use this for
+  larger numbers (0 to 65,535).
+
+Syntax Examples:
+--------------------------------------------------------------------
+.data
+    num1 DB 5              ; 8-bit variable initialized to 5
+    num2 DW 1000           ; 16-bit variable initialized to 1000
+    user_input DB ?        ; '?' means uninitialized (reserved space)
+    msg DB 'Hello!$'       ; String array (MUST end with '$' for DOS string printing)
+--------------------------------------------------------------------
+
+
+====================================================================
+2. THE GOLDEN RULE: INITIALIZING THE DATA SEGMENT (DS)
+====================================================================
+
+When your program starts, the CPU does NOT automatically know where
+your .data segment is located in memory. You must manually link the
+.data segment address to the DS (Data Segment) register at the
+start of main proc.
+
+WARNING: If you forget this step, your program will print garbage
+or crash!
+
+--------------------------------------------------------------------
+main proc
+    mov ax, @data   ; Get the memory address of the .data segment
+    mov ds, ax       ; Move that address into the Data Segment register
+
+    ; Now you can safely use your variables!
+--------------------------------------------------------------------
+
+
+====================================================================
+3. HOW TO USE VARIABLES IN CODE
+====================================================================
+
+A. Moving Data Between Variables and Registers
+--------------------------------------------------------------------
+- Read from memory: mov al, num1   (Copies the value of num1 into AL)
+- Write to memory:  mov user_input, al   (Copies what is in AL into user_input)
+
+THE ASSEMBLY RESTRICTION: You cannot move memory directly to memory!
+
+Writing "mov num2, num1" is illegal. You must route it through a
+register first:
+
+mov al, num1
+mov num2, al
+--------------------------------------------------------------------
+
+B. Size Matching
+
+The register size must match the variable size:
+- mov al, num1   -> OK (Both are 8-bit / Byte)
+- mov ax, num2   -> OK (Both are 16-bit / Word)
+- mov ax, num1   -> ERROR (Size mismatch! 16-bit register with 8-bit variable)
+
+
+====================================================================
+4. PRINTING STRINGS WITH FUNCTION 9h
+====================================================================
+
+To print an entire string instead of single characters, use DOS
+Function 9:
+1. Load 9 into AH.
+2. Load the address of the string into DX using LEA (Load Effective Address).
+3. Ensure the string in .data ends with a $.
+
+--------------------------------------------------------------------
+mov ah, 9
+lea dx, msg     ; LEA loads the memory address of 'msg' into DX
+int 21h
+--------------------------------------------------------------------
+
+
+====================================================================
+5. COMPLETE RUNNABLE EXAMPLE
+====================================================================
+
+Full program that uses strings, saves user input into a variable,
+and reads it back to display it:
+
+--------------------------------------------------------------------
+.model small
+.stack 100h
+
+.data
+    prompt DB 'Enter a single digit: $'
+    result DB 10, 13, 'You stored: $'   ; 10, 13 creates a new line
+    saved_num DB ?                      ; Variable to hold user input
+
+.code
+main proc
+    ; Step 1: Initialize Data Segment
+    mov ax, @data
+    mov ds, ax
+
+    ; Step 2: Print the prompt string
+    mov ah, 9
+    lea dx, prompt
+    int 21h
+
+    ; Step 3: Get user input
+    mov ah, 1
+    int 21h                     ; Input stored in AL
+
+    ; Step 4: Save input into our variable
+    mov saved_num, al
+
+    ; Step 5: Print the result string
+    mov ah, 9
+    lea dx, result
+    int 21h
+
+    ; Step 6: Load the variable back into DL and print it
+    ; [PDF cuts off here - remaining steps not present in source pages]
+--------------------------------------------------------------------
+
+
+====================================================================
+6. THE STACK (LIFO) - REVERSING A STRING USING THE STACK
+====================================================================
+
+The Stack is a LIFO (Last-In, First-Out) memory area. It works like
+a stack of plates: the last plate you put on top is the first one
+you take off.
+
+- PUSH reg: Saves a 16-bit register value onto the top of the stack.
+- POP reg:  Removes the top value from the stack and stores it into
+  a register.
+
+RULE: The stack operates strictly in 16-bit (Word) chunks. You can
+PUSH AX or PUSH BX, but you cannot push 8-bit registers like AL or BL.
+
+Code: Reversing a String Using the Stack
+--------------------------------------------------------------------
+.model small
+.stack 100h
+
+.data
+    str DB 'CAT$'
+
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+
+    ; Step 1: Push characters onto the Stack ('C', then 'A', then 'T')
+    lea si, str
+
+    mov ax, 0
+    mov al, [si]        ; Load 'C'
+    push ax             ; PUSH 16-bit AX
+
+    mov al, [si+1]      ; Load 'A'
+    push ax
+
+    mov al, [si+2]      ; Load 'T'
+    push ax
+
+    ; Step 2: Pop them off (They come out in reverse: 'T', then 'A', then 'C')
+    mov cx, 3
+PRINT_REVERSE:
+    pop ax              ; POP top value into AX
+    mov dl, al          ; DL gets the character
+    mov ah, 2
+    int 21h             ; Print character
+    loop PRINT_REVERSE
+
+    mov ah, 4ch
+    int 21h
+main endp
+end main
+--------------------------------------------------------------------
+
+
+====================================================================
+7. LOGICAL OPERATIONS & BIT MANIPULATION
+====================================================================
+
+Bitwise logic allows you to manipulate raw bits inside registers.
+
+Instruction | Operation                | Common Use Case
+------------|---------------------------|----------------------------------------
+AND         | Both bits must be 1       | Masking out unwanted bits, checking Odd/Even
+OR          | At least one bit is 1     | Forcing specific bits to turn ON (1)
+XOR         | Bits must be different    | Clearing registers (XOR AX, AX is faster than MOV AX, 0)
+
+
+====================================================================
+8. SUMMARY OF THE FLAGS REGISTER
+====================================================================
+
+When you run CMP or math operations, the CPU silently sets or
+clears bits in the Flags Register. Conditional jumps rely entirely
+on these flags:
+
+Flag Name     | Symbol | Set to 1 When...
+--------------|--------|------------------------------------------------
+Zero Flag     | ZF     | The result of an operation is zero (e.g., 5 - 5 = 0)
+Carry Flag    | CF     | An operation causes an unsigned overflow/borrow
+Sign Flag     | SF     | The result of an operation is negative (MSB is 1)
+Overflow Flag | OF     | A signed arithmetic operation exceeds limits
+
+Did you know? The "CMP AL, BL" instruction is secretly just a
+"SUB AL, BL" subtraction! The CPU calculates AL - BL, sets the
+Flags (ZF, CF, SF), and then throws away the subtraction result
+without altering AL.
+
+====================================================================
+END OF NOTES
+====================================================================
