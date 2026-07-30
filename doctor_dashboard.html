@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Ayur</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <nav class="dashboard-nav">
+            <div class="logo">
+                AYUR<span>.BD</span> <small style="color: var(--text-light); font-size: 0.9rem;">Doctor Portal</small>
+            </div>
+            <div class="dashboard-user">
+                <span>Welcome, <strong>Dr. Doctor</strong></span>
+                <div class="user-avatar">D</div>
+                <a href="backend/auth/logout.php" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#dashboard" class="active">📊 Dashboard</a></li>
+            <li><a href="#appointments">📅 Appointments</a></li>
+            <li><a href="#schedule">🕐 My Schedule</a></li>
+            <li><a href="#profile">👤 My Profile</a></li>
+            <li><a href="#reviews">⭐ Reviews</a></li>
+            <li><a href="#settings">⚙️ Settings</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <h1>Doctor Dashboard</h1>
+            
+            <!-- Statistics -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="icon">📅</div>
+                    <h3>0</h3>
+                    <p>Today's Appointments</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">✅</div>
+                    <h3>0</h3>
+                    <p>Completed This Month</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">⭐</div>
+                    <h3>0.0</h3>
+                    <p>Average Rating</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">💰</div>
+                    <h3>BDT 0</h3>
+                    <p>This Month Earnings</p>
+                </div>
+            </div>
+
+            <!-- Today's Schedule -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Today's Appointments</h2>
+                </div>
+                <p class="text-center text-muted">No appointments scheduled for today</p>
+            </section>
+
+            <!-- Profile Summary -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Profile Summary</h2>
+                    <button class="btn btn-primary btn-sm">Edit Profile</button>
+                </div>
+                <div class="grid grid-2">
+                    <div>
+                        <p><strong>Specialization:</strong> Not set</p>
+                        <p><strong>Experience:</strong> Not set</p>
+                        <p><strong>Consultation Fee:</strong> Not set</p>
+                    </div>
+                    <div>
+                        <p><strong>Available Days:</strong> Not set</p>
+                        <p><strong>Available Time:</strong> Not set</p>
+                        <p><strong>Status:</strong> <span class="badge badge-success">Active</span></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

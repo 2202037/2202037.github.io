@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Registration - Ayur</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card" style="max-width: 700px;">
+            <h2>Doctor Registration</h2>
+            <p>Register to provide medical services through Ayur platform</p>
+            <div class="alert alert-info">
+                <strong>Note:</strong> Your registration will be verified by our admin team before approval.
+            </div>
+            
+            <form id="doctorRegForm" action="backend/auth/register.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="role" value="doctor">
+                
+                <h4 class="mt-3 mb-2">Personal Information</h4>
+                
+                <div class="form-group">
+                    <label for="full_name" class="form-label">Full Name *</label>
+                    <input type="text" id="full_name" name="full_name" class="form-control" required>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password *</label>
+                        <input type="password" id="password" name="password" class="form-control" required minlength="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm_password" class="form-label">Confirm Password *</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+                    </div>
+                </div>
+                
+                <h4 class="mt-3 mb-2">Professional Information</h4>
+                
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="medical_degree" class="form-label">Medical Degree *</label>
+                        <input type="text" id="medical_degree" name="medical_degree" class="form-control" placeholder="e.g., MBBS, MD" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registration_no" class="form-label">Medical Council Reg. No. *</label>
+                        <input type="text" id="registration_no" name="registration_no" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="specialization" class="form-label">Specialization *</label>
+                        <select id="specialization" name="specialization" class="form-control" required>
+                            <option value="">Select Specialization</option>
+                            <option value="General Physician">General Physician</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                            <option value="Pediatrician">Pediatrician</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Orthopedic">Orthopedic</option>
+                            <option value="Gynecologist">Gynecologist</option>
+                            <option value="Psychiatrist">Psychiatrist</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience_years" class="form-label">Years of Experience *</label>
+                        <input type="number" id="experience_years" name="experience_years" class="form-control" min="0" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="consultation_fee" class="form-label">Consultation Fee (BDT) *</label>
+                    <input type="number" id="consultation_fee" name="consultation_fee" class="form-control" min="0" step="0.01" required>
+                </div>
+                
+                <div class="grid grid-2">
+                    <div class="form-group">
+                        <label for="available_days" class="form-label">Available Days</label>
+                        <input type="text" id="available_days" name="available_days" class="form-control" placeholder="e.g., Mon, Wed, Fri">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="available_time" class="form-label">Available Time</label>
+                        <input type="text" id="available_time" name="available_time" class="form-control" placeholder="e.g., 9 AM - 5 PM">
+                    </div>
+                </div>
+                
+                <h4 class="mt-3 mb-2">Verification Documents</h4>
+                
+                <div class="form-group">
+                    <label for="profile_photo" class="form-label">Profile Photo *</label>
+                    <input type="file" id="profile_photo" name="profile_photo" class="form-control" accept="image/*" required>
+                    <small class="form-help">Professional photo. Max size: 2MB</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="degree_certificate" class="form-label">Degree Certificate *</label>
+                    <input type="file" id="degree_certificate" name="degree_certificate" class="form-control" accept="image/*,.pdf" required>
+                    <small class="form-help">Upload your medical degree certificate. Max size: 5MB</small>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit for Verification</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 1.5rem;">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+            
+            <p style="text-align: center; margin-top: 0.5rem;">
+                <a href="register.html">← Choose Different Role</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="assets/js/validation.js"></script>
+</body>
+</html>

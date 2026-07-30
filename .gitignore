@@ -1,0 +1,26 @@
+# Uploads directory (contains user-uploaded files)
+uploads/
+
+# PHP sessions
+/tmp/
+
+# Environment configuration
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database backups
+*.sql.backup
+*.sql.bak

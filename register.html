@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Ayur Healthcare Platform</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card" style="max-width: 700px;">
+            <h2>Create Account</h2>
+            <p>Choose your role to get started</p>
+            
+            <div class="role-selection">
+                <div class="role-card" onclick="location.href='register_patient.html'">
+                    <div class="icon">👤</div>
+                    <h4>Patient</h4>
+                    <p>Book appointments and access healthcare services</p>
+                </div>
+                
+                <div class="role-card" onclick="location.href='register_doctor.html'">
+                    <div class="icon">👨‍⚕️</div>
+                    <h4>Doctor</h4>
+                    <p>Provide medical consultations and services</p>
+                </div>
+                
+                <div class="role-card" onclick="location.href='register_hospital.html'">
+                    <div class="icon">🏥</div>
+                    <h4>Hospital</h4>
+                    <p>Register your hospital or medical center</p>
+                </div>
+                
+                <div class="role-card" onclick="location.href='register_clinic.html'">
+                    <div class="icon">🏪</div>
+                    <h4>Clinic</h4>
+                    <p>Register your clinic or diagnostic center</p>
+                </div>
+                
+                <div class="role-card" onclick="location.href='register_pharmacy.html'">
+                    <div class="icon">💊</div>
+                    <h4>Pharmacy</h4>
+                    <p>Register your pharmacy or drug store</p>
+                </div>
+                
+                <div class="role-card" style="opacity: 0.6; cursor: not-allowed;">
+                    <div class="icon">🩸</div>
+                    <h4>Blood Bank</h4>
+                    <p>Contact admin for registration</p>
+                </div>
+            </div>
+            
+            <div class="auth-divider">
+                <span>OR</span>
+            </div>
+            
+            <p style="text-align: center; margin-top: 1.5rem;">
+                Already have an account? <a href="login.html">Login here</a>
+            </p>
+            
+            <p style="text-align: center; margin-top: 0.5rem;">
+                <a href="index.html">← Back to Home</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

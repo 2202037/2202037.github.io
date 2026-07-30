@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Ayur</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard">
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <nav class="dashboard-nav">
+            <div class="logo">
+                AYUR<span>.BD</span> <small style="color: var(--text-light); font-size: 0.9rem;">Patient Portal</small>
+            </div>
+            <div class="dashboard-user">
+                <span>Welcome, <strong id="patient-name">Patient</strong></span>
+                <div class="user-avatar">P</div>
+                <a href="backend/auth/logout.php" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#dashboard" class="active">📊 Dashboard</a></li>
+            <li><a href="search.html">🔍 Find Healthcare</a></li>
+            <li><a href="#appointments">📅 My Appointments</a></li>
+            <li><a href="#profile">👤 My Profile</a></li>
+            <li><a href="#reviews">⭐ My Reviews</a></li>
+            <li><a href="#payments">💳 Payment History</a></li>
+            <li><a href="blood-banks.html">🩸 Blood Services</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            <h1>Patient Dashboard</h1>
+            
+            <!-- Quick Actions -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="icon">📅</div>
+                    <h3 id="upcoming-appointments">0</h3>
+                    <p>Upcoming Appointments</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">✅</div>
+                    <h3 id="completed-appointments">0</h3>
+                    <p>Completed Appointments</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">⭐</div>
+                    <h3 id="total-reviews">0</h3>
+                    <p>Reviews Given</p>
+                </div>
+                <div class="stat-card">
+                    <div class="icon">💳</div>
+                    <h3 id="total-payments">0</h3>
+                    <p>Total Payments</p>
+                </div>
+            </div>
+
+            <!-- Quick Search -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Find Healthcare Services</h2>
+                </div>
+                <div class="grid grid-4">
+                    <a href="search.html?type=doctor" class="card text-center" style="text-decoration: none;">
+                        <div class="icon">👨‍⚕️</div>
+                        <h4>Find Doctors</h4>
+                        <p>Search for specialists</p>
+                    </a>
+                    <a href="search.html?type=hospital" class="card text-center" style="text-decoration: none;">
+                        <div class="icon">🏥</div>
+                        <h4>Find Hospitals</h4>
+                        <p>Locate hospitals nearby</p>
+                    </a>
+                    <a href="search.html?type=clinic" class="card text-center" style="text-decoration: none;">
+                        <div class="icon">🏪</div>
+                        <h4>Find Clinics</h4>
+                        <p>Browse clinics</p>
+                    </a>
+                    <a href="search.html?type=pharmacy" class="card text-center" style="text-decoration: none;">
+                        <div class="icon">💊</div>
+                        <h4>Find Pharmacies</h4>
+                        <p>Locate pharmacies</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Recent Appointments -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Appointments</h2>
+                    <a href="#all-appointments" class="btn btn-outline btn-sm">View All</a>
+                </div>
+                <div id="recent-appointments">
+                    <p class="text-center text-muted">No appointments yet. <a href="search.html">Book your first appointment</a></p>
+                </div>
+            </section>
+
+            <!-- Health Tips -->
+            <section class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">Health Tips</h2>
+                </div>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h4>💧 Stay Hydrated</h4>
+                        <p>Drink at least 8 glasses of water daily for optimal health.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🏃 Regular Exercise</h4>
+                        <p>At least 30 minutes of physical activity daily is recommended.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥗 Balanced Diet</h4>
+                        <p>Include fruits, vegetables, and protein in your daily meals.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="assets/js/patient-dashboard.js"></script>
+</body>
+</html>

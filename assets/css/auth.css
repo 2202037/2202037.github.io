@@ -1,0 +1,104 @@
+/**
+ * Ayur Healthcare Platform - Authentication Styles
+ */
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2E86C1 0%, #28B463 100%);
+    padding: 2rem;
+}
+
+.auth-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 3rem;
+    max-width: 500px;
+    width: 100%;
+}
+
+.auth-card h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.auth-card p {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.auth-divider {
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.auth-divider span {
+    background: white;
+    padding: 0 1rem;
+    position: relative;
+    color: var(--text-light);
+}
+
+.role-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.role-card {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    border-color: var(--primary-color);
+    background: rgba(46, 134, 193, 0.05);
+    transform: translateY(-3px);
+}
+
+.role-card .icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.role-card h4 {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.role-card p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 2rem;
+    }
+    
+    .role-selection {
+        grid-template-columns: 1fr;
+    }
+}
